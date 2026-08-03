@@ -276,15 +276,6 @@ export default function WhalesailsRecords() {
             </motion.h1>
           </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9, duration: 0.8 }}
-            className="mt-8 text-xs md:text-sm font-mono tracking-[0.5em] text-white/50 uppercase"
-          >
-            Cinematic Sound · Timeless Vision · Premium Artistry
-          </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -317,9 +308,6 @@ export default function WhalesailsRecords() {
           <div className="hidden md:block">
             <p className="text-[10px] font-mono tracking-[0.3em] text-white/35 uppercase">
               {CONTACT.parent}
-            </p>
-            <p className="text-[10px] font-mono tracking-[0.3em] text-white/35 uppercase mt-1">
-              DIVISION OF MUSIC
             </p>
           </div>
           <div className="flex items-end gap-1 h-8">
@@ -627,7 +615,7 @@ export default function WhalesailsRecords() {
                       src={s.artwork}
                       alt={`${s.artist} — ${s.title} artwork`}
                       fill
-                      className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[1.2s] group-hover:scale-105"
+                      className="object-cover -[30%] group-hover:-0 transition-all duration-[1.2s] group-hover:scale-105"
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

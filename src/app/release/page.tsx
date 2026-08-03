@@ -200,7 +200,7 @@ export default function ReleasePage() {
                       src={s.artwork}
                       alt={`${s.artist} — ${s.title} artwork`}
                       fill
-                      className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[1.2s] group-hover:scale-105"
+                      className="object-cover -[30%] group-hover:-0 transition-all duration-[1.2s] group-hover:scale-105"
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

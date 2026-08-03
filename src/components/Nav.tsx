@@ -77,13 +77,7 @@ export default function Nav() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link
-              href="/release"
-              className="hidden md:flex items-center gap-2 border border-white/20 px-5 py-2.5 text-[10px] font-bold tracking-[0.25em] uppercase hover:bg-white hover:text-black transition-all duration-300"
-            >
-              <Play className="w-3 h-3 fill-current" />
-              Listen
-            </Link>
+
             <button
               className="md:hidden p-2 text-white"
               onClick={() => setMenuOpen(!menuOpen)}

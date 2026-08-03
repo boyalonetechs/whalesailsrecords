@@ -182,7 +182,7 @@ export default function ArtistPage() {
                   src={g.src}
                   alt={g.tag}
                   fill
-                  className="object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-[1.2s] group-hover:scale-105"
+                  className="object-cover -[40%] group-hover:-0 transition-all duration-[1.2s] group-hover:scale-105"
                   sizes="(min-width: 768px) 25vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
