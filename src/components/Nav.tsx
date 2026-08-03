@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Play } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -76,7 +76,7 @@ export default function Nav() {
             })}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex lg:hidden items-center gap-4">
 
             <button
               className="md:hidden p-2 text-white"

@@ -3,6 +3,7 @@ export const NAV_ITEMS = [
   { label: "About US", href: "/label" },
   { label: "Artist", href: "/artist" },
   { label: "Release", href: "/release" },
+  { label: "Blog", href: "/blog" },
   { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
 ];

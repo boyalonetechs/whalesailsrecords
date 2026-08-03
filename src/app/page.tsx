@@ -214,14 +214,15 @@ export default function WhalesailsRecords() {
       <Nav />
 
       {/* HERO */}
-      <section id="home" className="relative min-h-screen flex flex-col">
+      <section id="home" className="relative min-h-screen flex flex-col overflow-hidden">
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/whalesails/img/hero-press.jpg"
-            alt=""
+            alt="Whalesails Records — session"
             fill
             priority
-            className="object-cover"
+            className="object-cover object-top"
             sizes="100vw"
           />
           <video
@@ -229,103 +230,109 @@ export default function WhalesailsRecords() {
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
             poster="/whalesails/img/hero-press.jpg"
           >
             <source src="/hero_video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
-          <div className="absolute inset-0 bg-grid opacity-60" />
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black" />
+          <div className="absolute inset-0 bg-grid opacity-40" />
 
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-5 text-center pt-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 1, ease: EASE }}
-            className="w-32 h-32 md:w-44 md:h-44 relative mb-10"
+          {/* Arc line */}
+          <svg
+            className="absolute inset-x-0 bottom-16 w-full h-64 pointer-events-none opacity-70"
+            viewBox="0 0 1000 300"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
           >
-            <Image
-              src="/whalesails/wsr-logo.png"
-              alt="Whalesails Records"
-              fill
-              className="object-contain"
-              sizes="176px"
-              priority
+            <path
+              d="M -50,280 C 300,20 700,20 1050,280"
+              stroke="rgba(255,255,255,0.08)"
+              strokeWidth="1.5"
             />
-          </motion.div>
-
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: "105%" }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.35, duration: 1.1, ease: EASE }}
-              className="font-display text-[clamp(3.5rem,11vw,10rem)] leading-[0.9] tracking-[0.02em] uppercase"
-            >
-              Whalesails
-            </motion.h1>
-          </div>
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: "105%" }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.5, duration: 1.1, ease: EASE }}
-              className="font-display text-[clamp(3.5rem,11vw,10rem)] leading-[0.9] tracking-[0.02em] uppercase text-stroke"
-            >
-              Records
-            </motion.h1>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8, ease: EASE }}
-            className="mt-10 flex flex-col sm:flex-row items-center gap-4"
-          >
-            <button
-              onClick={() => go("artist")}
-              className="group flex items-center gap-3 bg-white text-black px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:gap-5 transition-all"
-            >
-              <Play className="w-4 h-4 fill-current" />
-              Enter the Sound
-            </button>
-            <button
-              onClick={() => go("release")}
-              className="border border-white/25 text-white px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:bg-white/10 transition-all"
-            >
-              New Music Soon
-            </button>
-          </motion.div>
+          </svg>
         </div>
 
-        {/* Equalizer footer of hero */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
-          className="relative z-10 flex items-end justify-between px-5 md:px-10 pb-8"
-        >
-          <div className="hidden md:block">
-            <p className="text-[10px] font-mono tracking-[0.3em] text-white/35 uppercase">
-              {CONTACT.parent}
-            </p>
+        {/* Split layout */}
+        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto px-5 md:px-10 pt-36 pb-20">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-end">
+            {/* Left: headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: EASE }}
+              className="md:col-span-7 space-y-6"
+            >
+              <SectionTag>Whalesails Records LTD</SectionTag>
+              <h1 className="font-display text-[clamp(3.5rem,10vw,9rem)] uppercase tracking-tight leading-[0.95]">
+                Whalesails
+                <br />
+                <span className="text-white/30">Records</span>
+              </h1>
+            </motion.div>
+
+            {/* Right: intro + CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
+              className="md:col-span-5 md:pl-6 space-y-8"
+            >
+              <p className="text-white/55 text-sm md:text-base leading-relaxed max-w-md">
+                A premium record label built on discipline, authenticity and
+                long-term creative value — cinematic work engineered for global
+                relevance.
+              </p>
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <button
+                  onClick={() => go("artist")}
+                  className="group inline-flex items-center gap-3 bg-white text-black px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:gap-5 transition-all"
+                >
+                  <Play className="w-4 h-4 fill-current" />
+                  Enter the Sound
+                </button>
+                <button
+                  onClick={() => go("release")}
+                  className="border border-white/20 text-white px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:bg-white/5 hover:border-white/40 transition-all"
+                >
+                  New Music Soon
+                </button>
+              </div>
+            </motion.div>
           </div>
-          <div className="flex items-end gap-1 h-8">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <span
-                key={i}
-                className="eq-bar w-[3px] bg-white/70"
-                style={{ animationDelay: `${i * 0.15}s` }}
-              />
-            ))}
-          </div>
-          <button
-            onClick={() => go("label")}
-            className="hidden md:flex items-center gap-2 text-[10px] font-mono tracking-[0.3em] text-white/35 hover:text-white uppercase transition-colors"
+
+          {/* Bottom strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1, duration: 1 }}
+            className="mt-20 flex items-center justify-between border-t border-white/10 pt-6"
           >
-            Scroll <ArrowUpRight className="w-3.5 h-3.5 rotate-90" />
-          </button>
-        </motion.div>
+            <a
+              href="#label"
+              className="flex items-center gap-3 text-[9px] font-mono tracking-[0.4em] text-white/40 uppercase hover:text-white transition-colors"
+            >
+              <span className="w-px h-6 bg-white/30" />
+              Scroll to Explore
+            </a>
+            <div className="hidden md:flex items-center gap-2 text-[9px] font-mono tracking-[0.4em] text-white/40 uppercase">
+              <span className="flex items-end gap-1 h-4 mr-2">
+                {[3, 6, 4, 8, 5, 7, 4].map((h, i) => (
+                  <span
+                    key={i}
+                    className="w-[2px] bg-white/70"
+                    style={{ height: `${h}px`, animation: `eq ${0.9 + i * 0.15}s ease-in-out infinite` }}
+                  />
+                ))}
+              </span>
+              Sound Forward
+            </div>
+            <span className="text-[9px] font-mono tracking-[0.4em] text-white/40 uppercase">
+              {CONTACT.parent}
+            </span>
+          </motion.div>
+        </div>
       </section>
 
       {/* MARQUEE */}
