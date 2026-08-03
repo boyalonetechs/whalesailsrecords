@@ -76,6 +76,9 @@ body {
 .animate-marquee-slow {
   animation: marquee 55s linear infinite;
 }
+.animate-marquee-reverse {
+  animation: marquee 48s linear infinite reverse;
+}
 
 /* Equalizer bars */
 @keyframes eq {

@@ -214,15 +214,15 @@ export default function WhalesailsRecords() {
       <Nav />
 
       {/* HERO */}
-      <section id="home" className="relative min-h-screen flex flex-col overflow-hidden">
-        {/* Background */}
+      <section id="home" className="relative min-h-screen overflow-hidden bg-black">
+        {/* Full-bleed video */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/whalesails/img/hero-press.jpg"
             alt="Whalesails Records — session"
             fill
             priority
-            className="object-cover object-top"
+            className="object-cover object-center"
             sizes="100vw"
           />
           <video
@@ -230,109 +230,252 @@ export default function WhalesailsRecords() {
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-40"
+            className="absolute inset-0 w-full h-full object-cover object-center opacity-35"
             poster="/whalesails/img/hero-press.jpg"
           >
             <source src="/hero_video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black" />
-          <div className="absolute inset-0 bg-grid opacity-40" />
-
-          {/* Arc line */}
-          <svg
-            className="absolute inset-x-0 bottom-16 w-full h-64 pointer-events-none opacity-70"
-            viewBox="0 0 1000 300"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M -50,280 C 300,20 700,20 1050,280"
-              stroke="rgba(255,255,255,0.08)"
-              strokeWidth="1.5"
-            />
-          </svg>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
         </div>
 
-        {/* Split layout */}
-        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto px-5 md:px-10 pt-36 pb-20">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-end">
-            {/* Left: headline */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: EASE }}
-              className="md:col-span-7 space-y-6"
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 pt-24">
+          {/* Offset giant words */}
+          <div className="relative w-full max-w-6xl mx-auto h-[58vh] md:h-[68vh]">
+            <motion.h1
+              initial={{ opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+              className="[text-shadow:0_2px_40px_rgba(0,0,0,0.35)] font-display text-[clamp(4rem,13vw,12rem)] text-white tracking-tight leading-none absolute top-0 left-0 md:left-4 flex flex-col items-start"
             >
-              <SectionTag>Whalesails Records LTD</SectionTag>
-              <h1 className="font-display text-[clamp(3.5rem,10vw,9rem)] uppercase tracking-tight leading-[0.95]">
-                Whalesails
-                <br />
-                <span className="text-white/30">Records</span>
-              </h1>
-            </motion.div>
+              <span className="relative">SOUND</span>
+              <span className="md:hidden block mt-2 w-16 h-[3px] rounded-full bg-gradient-to-r from-white/80 to-transparent" />
+              <span className="md:hidden block mt-2 text-[9px] font-mono tracking-[0.3em] text-white/60 font-normal">
+                WHALESAILS RECORDS LTD
+              </span>
+              <span className="hidden md:block mt-2 w-24 h-[3px] rounded-full bg-gradient-to-r from-white/70 to-transparent" />
+            </motion.h1>
 
-            {/* Right: intro + CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-              className="md:col-span-5 md:pl-6 space-y-8"
+            <motion.h1
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+              className="[text-shadow:0_2px_40px_rgba(0,0,0,0.35)] font-display text-[clamp(4rem,13vw,12rem)] text-white tracking-tight leading-none absolute bottom-0 right-0 md:right-4 flex flex-col items-end"
             >
-              <p className="text-white/55 text-sm md:text-base leading-relaxed max-w-md">
-                A premium record label built on discipline, authenticity and
-                long-term creative value — cinematic work engineered for global
-                relevance.
-              </p>
-              <div className="flex flex-col sm:flex-row items-start gap-4">
-                <button
-                  onClick={() => go("artist")}
-                  className="group inline-flex items-center gap-3 bg-white text-black px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:gap-5 transition-all"
-                >
-                  <Play className="w-4 h-4 fill-current" />
-                  Enter the Sound
-                </button>
-                <button
-                  onClick={() => go("release")}
-                  className="border border-white/20 text-white px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:bg-white/5 hover:border-white/40 transition-all"
-                >
-                  New Music Soon
-                </button>
+              <span className="hidden md:block mb-2 w-24 h-[3px] rounded-full bg-gradient-to-l from-white/70 to-transparent" />
+              <span className="md:hidden block mb-1 w-16 h-[3px] rounded-full bg-gradient-to-l from-white/80 to-transparent" />
+              <span className="relative">VISION</span>
+            </motion.h1>
+
+            {/* Circular emblem */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5, filter: "blur(12px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ delay: 0.45, duration: 1.1, ease: EASE }}
+              className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 lg:w-52 lg:h-52 items-center justify-center"
+            >
+              <div className="absolute inset-0 rounded-full bg-white/[0.06] animate-halo blur-2xl" />
+              <div className="absolute inset-0 rounded-full border border-white/15 animate-spin-slow-reverse">
+                <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.9)]" />
+                <span className="absolute bottom-2 left-4 w-1 h-1 bg-white/60 rounded-full" />
+                <span className="absolute top-6 right-3 w-1 h-1 bg-white/60 rounded-full" />
+              </div>
+              <div className="absolute inset-3 rounded-full border border-dashed border-white/20 animate-spin-slow">
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-white/80 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+              </div>
+
+              {/* Circular rotating text */}
+              <svg
+                viewBox="0 0 200 200"
+                className="absolute inset-0 w-full h-full circular-text pointer-events-none"
+              >
+                <defs>
+                  <path
+                    id="heroCirclePath"
+                    d="M 100,100 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0"
+                  />
+                </defs>
+                <text className="fill-white/50 text-[9px] font-mono tracking-[0.35em] uppercase">
+                  <textPath href="#heroCirclePath">
+                    Whalesails Records · Cinematic Sound · Timeless Vision ·
+                  </textPath>
+                </text>
+              </svg>
+
+              <div className="w-16 h-16 lg:w-20 lg:h-20 relative">
+                <Image
+                  src="/whalesails/wsr-logo.png"
+                  alt="Whalesails Records"
+                  fill
+                  className="object-contain"
+                  sizes="80px"
+                />
               </div>
             </motion.div>
           </div>
 
-          {/* Bottom strip */}
+          {/* Desktop CTA row */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 1 }}
-            className="mt-20 flex items-center justify-between border-t border-white/10 pt-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
+            className="hidden md:flex items-center gap-4 mt-12 relative z-20"
           >
-            <a
-              href="#label"
-              className="flex items-center gap-3 text-[9px] font-mono tracking-[0.4em] text-white/40 uppercase hover:text-white transition-colors"
+            <button
+              onClick={() => go("artist")}
+              className="group relative flex items-center gap-3 bg-white text-black px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase overflow-hidden"
             >
-              <span className="w-px h-6 bg-white/30" />
-              Scroll to Explore
-            </a>
-            <div className="hidden md:flex items-center gap-2 text-[9px] font-mono tracking-[0.4em] text-white/40 uppercase">
-              <span className="flex items-end gap-1 h-4 mr-2">
-                {[3, 6, 4, 8, 5, 7, 4].map((h, i) => (
-                  <span
-                    key={i}
-                    className="w-[2px] bg-white/70"
-                    style={{ height: `${h}px`, animation: `eq ${0.9 + i * 0.15}s ease-in-out infinite` }}
-                  />
-                ))}
+              <span className="absolute inset-y-0 left-0 w-0 bg-black group-hover:w-full transition-all duration-300" />
+              <span className="relative z-10 flex items-center gap-3 group-hover:text-white transition-colors duration-300">
+                <Play className="w-4 h-4 fill-current" />
+                Enter the Sound
               </span>
-              Sound Forward
-            </div>
-            <span className="text-[9px] font-mono tracking-[0.4em] text-white/40 uppercase">
-              {CONTACT.parent}
-            </span>
+            </button>
+            <button
+              onClick={() => go("release")}
+              className="border border-white/30 text-white px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:bg-white/10 transition-all"
+            >
+              New Music Soon
+            </button>
           </motion.div>
         </div>
+
+        {/* Glass card — brand (desktop bottom-left) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
+          className="hidden lg:block absolute left-6 bottom-16 z-20"
+        >
+          <div className="rounded-2xl p-4 max-w-[260px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+            <span className="text-[13px] text-white font-display tracking-[0.25em] uppercase">
+              Whalesails Records LTD
+            </span>
+            <p className="text-[11px] text-white/60 mt-1.5 leading-relaxed">
+              Premium label — cinematic sound engineered for global relevance.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Glass card — pillars (desktop left-mid) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.85, ease: EASE }}
+          className="hidden lg:block absolute left-6 bottom-64 z-20"
+        >
+          <div className="relative rounded-2xl p-5 bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+            <div className="flex flex-col gap-1.5">
+              {["Sovereign Ownership", "Cinematic Presentation", "Long-Term Value"].map(
+                (label) => (
+                  <span
+                    key={label}
+                    className="text-[12px] text-white uppercase tracking-wider font-medium"
+                  >
+                    {label}
+                  </span>
+                ),
+              )}
+            </div>
+            <div className="absolute -right-2 top-1/2 w-3 h-3 bg-white rounded-full shadow-[0_0_0_2px_rgba(255,255,255,0.35),0_0_0_4px_rgba(255,255,255,0.08)] -translate-y-1/2" />
+          </div>
+        </motion.div>
+
+        {/* Glass card — tagline (desktop top-right) */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
+          className="hidden lg:block absolute right-6 top-28 z-20"
+        >
+          <div className="relative rounded-2xl p-4 flex items-center gap-4 max-w-[360px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+            <div className="flex flex-col gap-1">
+              <span className="text-[13px] text-white uppercase tracking-wider font-display leading-tight">
+                Sound that outlasts trends.
+              </span>
+              <span className="text-[10px] text-white/50 font-normal leading-normal">
+                Discipline, authenticity and long-term creative value — in
+                every release.
+              </span>
+            </div>
+            <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/20 relative">
+              <Image
+                src="/whalesails/wsr-logo.png"
+                alt="Whalesails Records"
+                fill
+                className="object-contain p-2"
+                sizes="56px"
+              />
+            </div>
+            <div className="absolute -left-2 top-1/2 w-3 h-3 bg-white rounded-full shadow-[0_0_0_2px_rgba(255,255,255,0.35),0_0_0_4px_rgba(255,255,255,0.08)] -translate-y-1/2" />
+          </div>
+        </motion.div>
+
+        {/* Mobile hero glass box */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
+          className="md:hidden absolute bottom-24 left-4 right-4 z-20 mx-auto max-w-[320px]"
+        >
+          <div className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-2xl border border-white/25 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+            <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-bl from-white/20 to-transparent blur-xl rounded-full" />
+            <div className="relative p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.7)]" />
+                <span className="text-[8px] font-mono tracking-[0.25em] text-white/80 font-semibold uppercase">
+                  Welcome to
+                </span>
+              </div>
+              <p className="text-[13px] text-white font-bold leading-snug">
+                Whalesails Records — cinematic sound, timeless vision.
+              </p>
+              <div className="w-full h-[1px] bg-gradient-to-r from-white/60 via-white/20 to-transparent my-4" />
+              <button
+                onClick={() => go("artist")}
+                className="w-full h-10 rounded-xl bg-white text-black text-[10px] font-bold tracking-[0.25em] uppercase flex items-center justify-center gap-2 active:scale-95 transition-transform"
+              >
+                <Play className="w-3.5 h-3.5 fill-current" />
+                Enter the Sound
+              </button>
+              <div className="flex items-center gap-3 mt-4">
+                <div className="flex -space-x-2">
+                  {["#ffffff", "#2a2d33", "#666a70"].map((c, i) => (
+                    <div
+                      key={i}
+                      className="w-6 h-6 rounded-full border-2 border-white/40"
+                      style={{ background: c }}
+                    />
+                  ))}
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-extrabold text-white tracking-tight leading-none">
+                    01
+                  </span>
+                  <span className="text-[7px] text-white/70 font-medium tracking-wide uppercase">
+                    Flagship Artist
+                  </span>
+                </div>
+                <div className="ml-auto flex">
+                  {[0, 1, 2].map((i) => (
+                    <div key={i} className="w-1 h-1 rounded-full bg-white/50 mx-[2px]" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <a
+          href="#label"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-3"
+        >
+          <span className="text-[9px] font-mono tracking-[0.45em] text-white/50 uppercase">
+            Scroll
+          </span>
+          <span className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent" />
+        </a>
       </section>
 
       {/* MARQUEE */}

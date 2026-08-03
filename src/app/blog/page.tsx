@@ -3,75 +3,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { SectionTag, EASE } from "@/components/ui";
-
-type Post = {
-  id: string;
-  title: string;
-  category: string;
-  author: string;
-  date: string;
-  image: string;
-  spanCol?: string;
-};
-
-const CATEGORIES = ["All", "News", "Studio", "Releases", "Culture"];
-
-const POSTS: Post[] = [
-  {
-    id: "inside-the-studio",
-    title: "Inside the Studio: High Frequency",
-    category: "Studio",
-    author: "Ario PaPa",
-    date: "JUL 2026",
-    image: "/whalesails/img/press-5.jpg",
-    spanCol: "md:col-span-2",
-  },
-  {
-    id: "why-ownership-matters",
-    title: "The Long Game: Why Ownership Matters",
-    category: "Culture",
-    author: "Editorial",
-    date: "JUN 2026",
-    image: "/whalesails/img/press-1.jpg",
-  },
-  {
-    id: "session-notes-first-take",
-    title: "Session Notes: First Take",
-    category: "Studio",
-    author: "Whalesails Records",
-    date: "JUN 2026",
-    image: "/whalesails/img/artist-2.jpg",
-  },
-  {
-    id: "signal-check",
-    title: "Signal Check: What's Next for the Label",
-    category: "News",
-    author: "Editorial",
-    date: "MAY 2026",
-    image: "/whalesails/img/press-8.jpg",
-  },
-  {
-    id: "from-lagos-to-the-world",
-    title: "From Lagos to the World: The Ario PaPa Story",
-    category: "News",
-    author: "Editorial",
-    date: "MAY 2026",
-    image: "/whalesails/img/artist-5.jpg",
-  },
-  {
-    id: "playlist-intelligence",
-    title: "Playlist Intelligence: Engineering the Stream",
-    category: "Releases",
-    author: "Editorial",
-    date: "APR 2026",
-    image: "/whalesails/img/press-2.jpg",
-    spanCol: "md:col-span-2",
-  },
-];
+import { POSTS, CATEGORIES } from "@/data/blog";
 
 export default function BlogPage() {
   const [active, setActive] = useState("All");
@@ -196,6 +133,7 @@ export default function BlogPage() {
                   post.spanCol || ""
                 }`}
               >
+                <Link href={`/blog/${post.id}`} className="absolute inset-0 z-10" aria-label={post.title} />
                 {/* Image Background */}
                 <Image
                   src={post.image}
@@ -225,12 +163,9 @@ export default function BlogPage() {
                       {post.author} — {post.date}
                     </p>
                   </div>
-                  <button
-                    aria-label="View Post"
-                    className="w-10 h-10 rounded-full border border-white/30 bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all shrink-0 ml-4"
-                  >
+                  <span className="relative z-20 w-10 h-10 rounded-full border border-white/30 bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all shrink-0 ml-4">
                     <ArrowUpRight className="w-5 h-5" />
-                  </button>
+                  </span>
                 </div>
               </motion.article>
             ))}
