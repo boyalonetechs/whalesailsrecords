@@ -94,7 +94,7 @@ export default function WhalesailsRecords() {
         <section className="relative grid grid-cols-1 lg:grid-cols-12 border-b border-neutral-800 p-8 lg:p-12 items-center gap-6">
           <div className="lg:col-span-5 space-y-1">
             <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85] flex items-center gap-3">
-              CINEMATIC <span className="text-3xl text-neutral-500 font-normal">✳</span>
+              OWN <span className="text-3xl text-neutral-500 font-normal">✳</span>
             </h1>
             <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
               SOUND
@@ -107,7 +107,7 @@ export default function WhalesailsRecords() {
           <div className="lg:col-span-3 flex justify-center py-4">
             <div className="relative aspect-[3/4] w-full max-w-[220px] bg-neutral-900 overflow-hidden">
               <Image
-                src="/whalesails/img/artist-2.jpg"
+                src="/whalesails/whalesails-logo.png"
                 alt="Ario PaPa portrait"
                 fill
                 className="object-cover grayscale contrast-125"
