@@ -60,20 +60,18 @@ export function PageHero({
   image?: string;
 }) {
   return (
-    <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-50" />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-white/[0.03] blur-[120px]" />
+    <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden border-b border-white/5">
       {image && (
         <div className="absolute inset-0 -z-10">
           <Image
             src={image}
             alt=""
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-15"
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/85 to-black" />
         </div>
       )}
       <div className="relative max-w-7xl mx-auto px-5 md:px-10">

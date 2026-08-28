@@ -16,81 +16,44 @@ export default function BlogPage() {
     active === "All" ? POSTS : POSTS.filter((p) => p.category === active);
 
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans grain overflow-x-hidden">
+    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
       <Nav />
 
-      <div className="max-w-7xl mx-auto px-5 md:px-10 pt-36 pb-20 md:pt-44 md:pb-28 space-y-12">
-        {/* Hero Content Section */}
-        <section className="relative grid grid-cols-1 md:grid-cols-12 gap-8 items-start pt-4">
-          {/* Background Arc Effect */}
-          <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 1000 300"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M 100,280 C 400,40 700,40 900,280"
-                stroke="rgba(255,255,255,0.06)"
-                strokeWidth="1.5"
-              />
-              <path
-                d="M 150,320 C 450,80 650,80 850,320"
-                stroke="rgba(255,255,255,0.04)"
-                strokeWidth="1"
-              />
-            </svg>
-          </div>
-
-          {/* Left Column: Big Headline */}
+      <div className="max-w-7xl mx-auto px-5 md:px-10 pt-36 pb-20 md:pt-44 md:pb-28">
+        {/* Hero */}
+        <section className="flex flex-col md:flex-row md:items-end justify-between gap-8 pt-4 border-b border-white/5 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE }}
-            className="md:col-span-7 space-y-4"
+            className="max-w-2xl"
           >
             <SectionTag>The Journal</SectionTag>
-            <h1 className="font-display text-5xl md:text-7xl uppercase tracking-tight leading-[1.05]">
-              From Thought
+            <h1 className="font-display text-5xl md:text-7xl uppercase tracking-tight leading-[1.02]">
+              Field notes from
               <br />
-              <span className="text-white/30">to Masterpiece</span>
+              <span className="text-white/30">inside the machine</span>
             </h1>
           </motion.div>
-
-          {/* Right Column: Body Text & Primary CTA */}
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
-            className="md:col-span-5 space-y-6 md:pl-6 flex flex-col items-start justify-between h-full"
+            className="text-white/55 text-sm md:text-base leading-relaxed max-w-sm"
           >
-            <p className="text-white/55 text-sm md:text-base leading-relaxed">
-              Field notes, session stories and label strategy — written by the
-              people inside the machine. From first take to global signal, this
-              is how we build sound that outlasts the trend cycle.
-            </p>
-            <a
-              href="#archive"
-              className="bg-white text-black px-7 py-3.5 rounded-full font-medium text-sm hover:bg-white/85 transition-all shadow-sm"
-            >
-              Read the Journal
-            </a>
-          </motion.div>
+            Session stories, release notes and label strategy — written by the
+            people inside the sound.
+          </motion.p>
         </section>
 
-        {/* Filter Pills & Secondary Actions */}
-        <section
-          id="archive"
-          className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-white/5 scroll-mt-28"
-        >
-          {/* Category Filter Pills */}
+        {/* Filter */}
+        <section className="flex flex-wrap items-center justify-between gap-4 pt-10 pb-8">
           <div className="flex flex-wrap gap-2">
             {CATEGORIES.map((tag) => (
               <button
                 key={tag}
                 onClick={() => setActive(tag)}
-                className={`px-5 py-2 rounded-full text-xs font-medium border transition-all ${
+                className={`px-5 py-2 text-[10px] font-mono tracking-[0.25em] uppercase border transition-all ${
                   active === tag
                     ? "border-white bg-white text-black"
                     : "border-white/10 text-white/50 hover:border-white/30 hover:text-white"
@@ -100,73 +63,46 @@ export default function BlogPage() {
               </button>
             ))}
           </div>
-
-          {/* Right Secondary Buttons */}
-          <div className="flex items-center gap-2">
-            <a
-              href="mailto:info@whalesailsrecords.com"
-              className="px-5 py-2 rounded-full text-xs font-medium border border-white/10 text-white/50 hover:border-white/30 hover:text-white transition-all"
-            >
-              Newsletter
-            </a>
-            <a
-              href="#archive"
-              className="px-5 py-2 rounded-full text-xs font-medium border border-white/10 text-white/50 hover:border-white/30 hover:text-white transition-all"
-            >
-              Archive
-            </a>
-          </div>
         </section>
 
-        {/* Dynamic Post Cards Grid */}
-        <section className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-2">
+        {/* Posts */}
+        <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
             {filtered.map((post, i) => (
               <motion.article
                 key={post.id}
                 layout
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 24 }}
                 transition={{ duration: 0.5, ease: EASE, delay: i * 0.05 }}
-                className={`group relative overflow-hidden rounded-3xl h-[420px] bg-[#111111] ${
-                  post.spanCol || ""
-                }`}
+                className={`group ${post.spanCol || ""}`}
               >
-                <Link href={`/blog/${post.id}`} className="absolute inset-0 z-10" aria-label={post.title} />
-                {/* Image Background */}
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                />
-
-                {/* Gradient Overlay for Text Visibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-
-                {/* Category Badge */}
-                <div className="absolute top-5 left-5">
-                  <span className="text-[9px] font-mono tracking-[0.35em] text-white/70 uppercase px-3 py-1.5 rounded-full border border-white/20 bg-black/30 backdrop-blur-md">
-                    {post.category}
-                  </span>
-                </div>
-
-                {/* Card Metadata (Bottom Overlay) */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between text-white">
-                  <div>
-                    <h3 className="font-display text-xl md:text-2xl uppercase tracking-wide leading-snug">
-                      {post.title}
-                    </h3>
-                    <p className="text-xs text-white/50 mt-2">
-                      {post.author} — {post.date}
-                    </p>
+                <Link href={`/blog/${post.id}`} className="block">
+                  <div className="relative aspect-[4/3] overflow-hidden border border-white/10 group-hover:border-white/30 transition-colors duration-500">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                    />
+                    <span className="absolute top-4 left-4 text-[9px] font-mono tracking-[0.35em] text-white/70 uppercase px-3 py-1.5 border border-white/15 bg-black/40">
+                      {post.category}
+                    </span>
                   </div>
-                  <span className="relative z-20 w-10 h-10 rounded-full border border-white/30 bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all shrink-0 ml-4">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </span>
-                </div>
+                  <div className="pt-5 flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-display text-xl md:text-2xl uppercase tracking-wide leading-snug">
+                        {post.title}
+                      </h3>
+                      <p className="text-xs text-white/50 mt-2">
+                        {post.author} — {post.date}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 shrink-0 mt-1" />
+                  </div>
+                </Link>
               </motion.article>
             ))}
           </AnimatePresence>

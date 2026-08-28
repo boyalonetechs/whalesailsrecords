@@ -2,25 +2,24 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, ArrowUpRight, Send } from "lucide-react";
-import Image from "next/image";
+import { Mail, MapPin, Send } from "lucide-react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { PageHero, Reveal, SectionTag, EASE } from "@/components/ui";
 import { PLATFORMS, CONTACT } from "@/data/site";
 
 const INQUIRIES = [
-  { title: "Artist Submissions", desc: "Demos, EPKs and project proposals for label consideration.", email: "submissions@whalesailsrecords.com" },
-  { title: "Press & Media", desc: "Press kits, interviews, reviews and media partnerships.", email: CONTACT.email },
-  { title: "Bookings & Events", desc: "Live bookings, appearances and event collaborations.", email: CONTACT.email },
-  { title: "Business & Partnerships", desc: "Brands, investors, distributors and strategic alliances.", email: CONTACT.email },
+  { title: "Artist Submissions", desc: "Demos, EPKs and project proposals.", email: "submissions@whalesailsrecords.com" },
+  { title: "Press & Media", desc: "Press kits, interviews and reviews.", email: CONTACT.email },
+  { title: "Bookings & Events", desc: "Live bookings and appearances.", email: CONTACT.email },
+  { title: "Business & Partnerships", desc: "Brands, investors and alliances.", email: CONTACT.email },
 ];
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans grain overflow-x-hidden">
+    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
       <Nav />
 
       <PageHero
@@ -54,8 +53,7 @@ export default function ContactPage() {
                   Message received.
                 </p>
                 <p className="text-sm text-white/50 leading-relaxed">
-                  The label office will respond shortly. Meanwhile, follow the
-                  journey on the platforms below.
+                  The label office will respond shortly.
                 </p>
               </motion.div>
             ) : (
@@ -149,64 +147,51 @@ export default function ContactPage() {
                     Headquarters
                   </p>
                   <p className="text-sm font-semibold">
-                    {CONTACT.location} · Worldwide operations
+                    {CONTACT.location}
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
-              {INQUIRIES.map((q, i) => (
-                <motion.a
+              {INQUIRIES.map((q) => (
+                <a
                   key={q.title}
                   href={`mailto:${q.email}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.6, ease: EASE }}
                   className="group border border-white/10 p-5 hover:bg-[#0c0d0f] transition-colors duration-300"
                 >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-display text-lg uppercase tracking-wide">
-                      {q.title}
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-white transition-colors" />
-                  </div>
-                  <p className="text-xs text-white/40 leading-relaxed mb-3">
+                  <span className="font-display text-lg uppercase tracking-wide">
+                    {q.title}
+                  </span>
+                  <p className="text-xs text-white/40 leading-relaxed mt-3">
                     {q.desc}
                   </p>
-                  <p className="text-[10px] font-mono tracking-[0.2em] text-white/30 group-hover:text-white/60 uppercase">
+                  <p className="text-[10px] font-mono tracking-[0.2em] text-white/30 group-hover:text-white/60 uppercase mt-3">
                     {q.email}
                   </p>
-                </motion.a>
+                </a>
               ))}
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Social strip */}
+      {/* Platforms */}
       <section className="border-y border-white/10 bg-[#0a0b0d]">
         <div className="max-w-7xl mx-auto px-5 md:px-10 py-14">
-          <Reveal className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
-            <div>
-              <SectionTag>Elsewhere</SectionTag>
-              <h3 className="font-display text-3xl md:text-5xl uppercase">
-                Find us <span className="text-white/30">everywhere.</span>
-              </h3>
-            </div>
+          <Reveal className="mb-10">
+            <SectionTag>Elsewhere</SectionTag>
+            <h3 className="font-display text-3xl md:text-5xl uppercase">
+              Find us <span className="text-white/30">everywhere.</span>
+            </h3>
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/5">
-            {PLATFORMS.map((p, i) => (
-              <motion.a
+            {PLATFORMS.map((p) => (
+              <a
                 key={p.name}
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.6, ease: EASE }}
                 className="group flex flex-col items-center gap-3 py-8 px-4 bg-[#0a0b0d] hover:bg-white hover:text-black transition-colors duration-300"
               >
                 <span className="font-display text-2xl tracking-[0.1em] uppercase">
@@ -215,35 +200,11 @@ export default function ContactPage() {
                 <span className="text-[8px] font-mono tracking-[0.3em] text-white/35 group-hover:text-black/50 uppercase">
                   {p.tag}
                 </span>
-              </motion.a>
+              </a>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Logo marquee bottom */}
-      <div className="relative py-14 overflow-hidden">
-        <div className="flex whitespace-nowrap animate-marquee-slow opacity-60">
-          {[0, 1].map((n) => (
-            <div key={n} className="flex shrink-0 items-center">
-              {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="flex items-center gap-10 mx-10">
-                  <Image
-                    src="/whalesails/wsr-logo.png"
-                    alt="Whalesails Records"
-                    width={140}
-                    height={80}
-                    className="object-contain opacity-40"
-                  />
-                  <span className="font-display text-4xl text-white/15 uppercase">
-                    Whalesails Records
-                  </span>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
 
       <Footer />
     </div>

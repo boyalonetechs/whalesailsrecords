@@ -1,31 +1,30 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { PageHero, Reveal, SectionTag, EASE } from "@/components/ui";
+import { PageHero, Reveal, SectionTag } from "@/components/ui";
 import { SERVICES, CONTACT } from "@/data/site";
 
 const PROCESS = [
-  { step: "01", title: "Listen", desc: "Send us your work. We listen to everything — no algorithms, no autoplay." },
-  { step: "02", title: "Align", desc: "We meet the vision: sound, story, image and business structure in one room." },
-  { step: "03", title: "Build", desc: "Development begins — recordings, visuals, IP structure and release strategy." },
-  { step: "04", title: "Release", desc: "The record goes out with the full weight of the label behind it." },
-  { step: "05", title: "Endure", desc: "We stay in it — catalog management, royalties, growth and the next chapter." },
+  { step: "01", title: "Listen", desc: "Send us your work. We listen to everything." },
+  { step: "02", title: "Align", desc: "Sound, story, image and structure in one room." },
+  { step: "03", title: "Build", desc: "Recordings, visuals, IP and release strategy." },
+  { step: "04", title: "Release", desc: "The record goes out with the label behind it." },
+  { step: "05", title: "Endure", desc: "Catalog, royalties, growth and the next chapter." },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans grain overflow-x-hidden">
+    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
       <Nav />
 
       <PageHero
         kicker="Services"
         title="What the"
         accent="label builds"
-        desc="A full-service ecosystem for artists who intend to last — every function of a global label under one sovereign roof."
+        desc="A full-service label for artists who intend to last."
         image="/whalesails/img/press-10.jpg"
       />
 
@@ -33,13 +32,9 @@ export default function ServicesPage() {
       <section className="relative py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-5 md:px-10">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
-            {SERVICES.map((s, i) => (
-              <motion.div
+            {SERVICES.map((s) => (
+              <div
                 key={s.num}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: (i % 3) * 0.1, duration: 0.8, ease: EASE }}
                 className="group relative bg-black p-8 md:p-10 hover:bg-[#0c0d0f] transition-colors duration-500"
               >
                 <div className="flex items-start justify-between mb-8">
@@ -53,11 +48,9 @@ export default function ServicesPage() {
                 <h3 className="font-display text-2xl md:text-3xl uppercase tracking-wide mb-4">
                   {s.title}
                 </h3>
-                <p className="text-sm text-white/45 leading-relaxed">
-                  {s.desc}
-                </p>
+                <p className="text-sm text-white/45 leading-relaxed">{s.desc}</p>
                 <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -74,13 +67,9 @@ export default function ServicesPage() {
           </Reveal>
 
           <div className="space-y-px bg-white/5 border border-white/5">
-            {PROCESS.map((p, i) => (
-              <motion.div
+            {PROCESS.map((p) => (
+              <div
                 key={p.step}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.08, duration: 0.7, ease: EASE }}
                 className="group grid md:grid-cols-12 gap-4 items-center bg-[#0a0b0d] px-6 md:px-10 py-7 hover:bg-black transition-colors duration-500"
               >
                 <div className="md:col-span-1">
@@ -94,11 +83,9 @@ export default function ServicesPage() {
                   </h3>
                 </div>
                 <div className="md:col-span-8">
-                  <p className="text-sm text-white/45 leading-relaxed">
-                    {p.desc}
-                  </p>
+                  <p className="text-sm text-white/45 leading-relaxed">{p.desc}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -108,9 +95,7 @@ export default function ServicesPage() {
       <section className="relative py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-5 md:px-10 text-center">
           <Reveal>
-            <SectionTag center>
-              <span>Your move</span>
-            </SectionTag>
+            <SectionTag center>Your move</SectionTag>
             <h2 className="font-display text-5xl md:text-8xl uppercase leading-[0.9] mb-8">
               Got something
               <br />

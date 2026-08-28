@@ -32,8 +32,8 @@ export default function Nav() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 relative transition-transform duration-500 group-hover:rotate-[360deg]">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-9 h-9 relative">
               <Image
                 src="/whalesails/wsr-logo.png"
                 alt="Whalesails Records"
@@ -59,37 +59,23 @@ export default function Nav() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative text-[11px] font-medium tracking-[0.25em] uppercase transition-colors ${
+                  className={`text-[11px] font-medium tracking-[0.25em] uppercase transition-colors ${
                     active ? "text-white" : "text-white/50 hover:text-white"
                   }`}
                 >
                   {item.label}
-                  {active && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-white"
-                      transition={{ type: "spring", stiffness: 200, damping: 24 }}
-                    />
-                  )}
                 </Link>
               );
             })}
           </nav>
 
-          <div className="flex lg:hidden items-center gap-4">
-
-            <button
-              className="md:hidden p-2 text-white"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
-            >
-              {menuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
+          <button
+            className="md:hidden p-2 text-white"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </header>
 
@@ -100,7 +86,7 @@ export default function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/97 backdrop-blur-2xl flex flex-col items-center justify-center gap-7 md:hidden"
+            className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-7 md:hidden"
           >
             {NAV_ITEMS.map((item, i) => (
               <motion.div
@@ -126,7 +112,7 @@ export default function Nav() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="absolute bottom-10 flex flex-col items-center gap-2"
+              className="absolute bottom-10 text-center"
             >
               <span className="text-[10px] font-mono tracking-[0.3em] text-white/30 uppercase">
                 info@whalesailsrecords.com

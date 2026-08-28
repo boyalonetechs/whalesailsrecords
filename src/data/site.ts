@@ -1,10 +1,9 @@
 export const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "About US", href: "/label" },
   { label: "Artist", href: "/artist" },
-  { label: "Release", href: "/release" },
-  { label: "Blog", href: "/blog" },
-  { label: "Services", href: "/services" },
+  { label: "Music", href: "/release" },
+  { label: "About", href: "/label" },
+  { label: "Journal", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -12,73 +11,66 @@ export const SERVICES = [
   {
     num: "01",
     title: "Artist Development",
-    desc: "From first single to global stage — structured development programs that shape sound, image and story into a durable artistic identity.",
+    desc: "From first single to global stage — structured development that shapes sound, image and story into a durable identity.",
   },
   {
     num: "02",
     title: "A&R & Scouting",
-    desc: "We identify distinctive voices with long-term cultural value and bring them into an ecosystem built for sustainable careers, not hype cycles.",
+    desc: "We identify distinctive voices with long-term cultural value and bring them into a system built for sustainable careers.",
   },
   {
     num: "03",
     title: "Distribution & Streaming",
-    desc: "Premium release strategy across every major platform — engineered playlisting, global delivery and real-time analytics on performance.",
+    desc: "Premium release strategy across every major platform — engineered playlisting, global delivery and real-time analytics.",
   },
   {
     num: "04",
     title: "Creative Direction",
-    desc: "Cinematic visuals, photography and branding executed with restraint and precision. Every asset built to outlive the trend that inspired it.",
+    desc: "Cinematic visuals, photography and branding executed with restraint. Every asset built to outlive the trend that inspired it.",
   },
   {
     num: "05",
     title: "Publishing & IP",
-    desc: "Strong intellectual property structures that let artists own their work and monetize it across generations of releases.",
+    desc: "Ownership-first structures that let artists keep their work and monetize it across generations of releases.",
   },
   {
     num: "06",
     title: "Marketing & PR",
-    desc: "Press, placements and campaigns that convert attention into fandom — measured, deliberate and globally competitive.",
+    desc: "Press, placements and campaigns that convert attention into fandom — measured, deliberate, globally competitive.",
   },
 ];
 
 export const PLATFORMS = [
   {
     name: "Spotify",
-    tag: "STREAM / 4.2M",
+    tag: "STREAM",
     url: "https://open.spotify.com/artist/4jUd2ZZE9NoLBiDIsXdQIK?si=kggjJUhoRR2CLLRp33ZtOw&utm_source=copy-link",
   },
   {
     name: "Apple Music",
-    tag: "STREAM / LOSSLESS",
+    tag: "STREAM",
     url: "https://music.apple.com/gb/artist/ario-papa/1755429756",
   },
   {
     name: "Audiomack",
-    tag: "STREAM / EARLY",
+    tag: "STREAM",
     url: "https://audiomack.com/ariopapa",
   },
   {
     name: "Instagram",
-    tag: "FOLLOW / DAILY",
+    tag: "FOLLOW",
     url: "https://www.instagram.com/iam_ariopapa?igsh=b3I0bTY5eTgzaTJn&utm_source=qr",
   },
   {
     name: "TikTok",
-    tag: "FOLLOW / CLIPS",
+    tag: "FOLLOW",
     url: "https://www.tiktok.com/@ariopapa?_r=1&_t=ZS-97srPTG3a68",
   },
   {
     name: "Facebook",
-    tag: "FOLLOW / UPDATES",
+    tag: "FOLLOW",
     url: "https://www.facebook.com/share/1BGsUgtHeg/?mibextid=wwXIfr",
   },
-];
-
-export const STATS = [
-  { value: "01", label: "Flagship Artist" },
-  { value: "∞", label: "Ownership Model" },
-  { value: "120+", label: "Creative Assets" },
-  { value: "03", label: "Platforms Live" },
 ];
 
 export const RELEASED = [
@@ -96,7 +88,7 @@ export const RELEASED = [
     artist: "Ario PaPa",
     type: "Single",
     year: "2026",
-    tag: "TBD",
+    tag: "COMING SOON",
     url: "#",
     artwork: "/whalesails/img/press-5.jpg",
   },
@@ -105,23 +97,13 @@ export const RELEASED = [
     artist: "Ario PaPa",
     type: "Single",
     year: "2026",
-    tag: "TBD",
+    tag: "COMING SOON",
     url: "#",
     artwork: "/whalesails/img/artist-5.jpg",
   },
 ];
 
-export const GALLERY = [
-  { src: "/whalesails/img/artist-1.jpg", tag: "SESSION 01" },
-  { src: "/whalesails/img/press-1.jpg", tag: "SESSION 02" },
-  { src: "/whalesails/img/artist-4.jpg", tag: "SESSION 03" },
-  { src: "/whalesails/img/press-8.jpg", tag: "SESSION 04" },
-  { src: "/whalesails/img/artist-7.jpg", tag: "SESSION 05" },
-  { src: "/whalesails/img/press-2.jpg", tag: "SESSION 06" },
-];
-
 export const CONTACT = {
   email: "info@whalesailsrecords.com",
   location: "Lagos, Nigeria",
-  parent: "WHALES SOVEREIGN LTD",
 };
