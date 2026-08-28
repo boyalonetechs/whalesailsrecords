@@ -1,12 +1,3 @@
-export const NAV_ITEMS = [
-  { label: "Home", href: "/" },
-  { label: "Artist", href: "/artist" },
-  { label: "Music", href: "/release" },
-  { label: "About", href: "/label" },
-  { label: "Journal", href: "/blog" },
-  { label: "Contact", href: "/contact" },
-];
-
 export const SERVICES = [
   {
     num: "01",
@@ -70,36 +61,6 @@ export const PLATFORMS = [
     name: "Facebook",
     tag: "FOLLOW",
     url: "https://www.facebook.com/share/1BGsUgtHeg/?mibextid=wwXIfr",
-  },
-];
-
-export const RELEASED = [
-  {
-    title: "High Frequency",
-    artist: "Ario PaPa",
-    type: "Single",
-    year: "2026",
-    tag: "OUT NOW",
-    url: "https://ariopapa.com/high-frequency",
-    artwork: "/whalesails/artwork-song.png",
-  },
-  {
-    title: "Untitled 02",
-    artist: "Ario PaPa",
-    type: "Single",
-    year: "2026",
-    tag: "COMING SOON",
-    url: "#",
-    artwork: "/whalesails/img/press-5.jpg",
-  },
-  {
-    title: "Untitled 03",
-    artist: "Ario PaPa",
-    type: "Single",
-    year: "2026",
-    tag: "COMING SOON",
-    url: "#",
-    artwork: "/whalesails/img/artist-5.jpg",
   },
 ];
 

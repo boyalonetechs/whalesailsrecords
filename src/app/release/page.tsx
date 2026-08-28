@@ -1,197 +1,161 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowUpRight, Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import { PageHero, Reveal, SectionTag, EASE } from "@/components/ui";
-import { PLATFORMS, RELEASED } from "@/data/site";
+import { ArrowUpRight } from "lucide-react";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import { PLATFORMS } from "@/data/site";
+
+const RELEASED = [
+  {
+    title: "High Frequency",
+    artist: "Ario PaPa · Single · 2026",
+    tag: "Out Now",
+    img: "/whalesails/artwork-song.png",
+    url: "https://ariopapa.com/high-frequency",
+  },
+  {
+    title: "Untitled 02",
+    artist: "Ario PaPa · Single · 2026",
+    tag: "Coming Soon",
+    img: "/whalesails/img/press-5.jpg",
+    url: "#",
+  },
+  {
+    title: "Untitled 03",
+    artist: "Ario PaPa · Single · 2026",
+    tag: "Coming Soon",
+    img: "/whalesails/img/artist-5.jpg",
+    url: "#",
+  },
+];
 
 export default function ReleasePage() {
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      <Nav />
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto border border-neutral-800 bg-[#060606]">
+        <SiteHeader />
 
-      <PageHero
-        kicker="New Release"
-        title="Debut"
-        accent="Single"
-        desc="The first release from Whalesails Records — a cinematic introduction to the sound of Ario PaPa."
-        image="/whalesails/artwork-song.png"
-      />
+        {/* HERO */}
+        <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
+          <h2 className="text-xl tracking-[0.2em] font-light mb-6">
+            NEWEST <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> RELEASE
+          </h2>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+            HIGH
+          </h1>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+            <span className="text-neutral-500">FREQUENCY.</span>
+          </h1>
+        </section>
 
-      {/* Artwork + streams */}
-      <section className="relative py-20 md:py-28">
-        <div className="relative max-w-7xl mx-auto px-5 md:px-10 grid lg:grid-cols-2 gap-16 items-center">
-          <Reveal className="relative max-w-md mx-auto lg:mx-0 w-full">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.1, ease: EASE }}
-              className="relative aspect-square overflow-hidden border border-white/15"
-            >
+        {/* MAIN */}
+        <section className="grid grid-cols-1 md:grid-cols-12 border-b border-neutral-800 p-8 lg:p-12 gap-8 items-center">
+          <div className="md:col-span-5 relative">
+            <div className="relative aspect-square w-full max-w-[300px] bg-neutral-900 overflow-hidden mx-auto md:mx-0">
               <a
                 href="https://ariopapa.com/high-frequency"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute inset-0 z-10"
                 aria-label="Listen to High Frequency"
-              />
-              <Image
-                src="/whalesails/artwork-song.png"
-                alt="Ario PaPa — Debut single artwork"
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                priority
-              />
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center">
-                  <Play className="w-8 h-8 fill-current ml-1" />
-                </span>
-              </div>
-            </motion.div>
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <SectionTag>Stream Now</SectionTag>
-            <h2 className="font-display text-6xl md:text-8xl uppercase leading-[0.9] mb-4">
-              Ario PaPa
-            </h2>
-            <div className="flex items-center gap-4 mb-8">
-              <span className="w-12 h-px bg-white/40" />
-              <span className="text-[10px] font-mono tracking-[0.35em] text-white/40 uppercase">
-                Single · 2026
-              </span>
+              >
+                <Image
+                  src="/whalesails/artwork-song.png"
+                  alt="Ario PaPa — High Frequency artwork"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </a>
             </div>
-            <p className="text-white/55 leading-relaxed max-w-md text-[15px] mb-10">
-              Stream the debut single across every platform — and watch for the
-              next signal from the label.
-            </p>
+          </div>
 
-            <div className="flex flex-col gap-3 max-w-md">
+          <div className="md:col-span-7 space-y-5">
+            <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-[0.9]">
+              ARIO <span className="text-neutral-500">PAPA</span>
+              <br />
+              THE DEBUT SINGLE.
+            </h2>
+            <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wide max-w-md">
+              The first release from Ario PaPa — a cinematic introduction to the
+              sound, engineered for the first listen.
+            </p>
+            <div className="pt-2 space-y-2">
               {PLATFORMS.slice(0, 3).map((p) => (
                 <a
                   key={p.name}
                   href={p.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between border border-white/10 px-6 py-4 hover:bg-white hover:text-black transition-all duration-300"
+                  className="group flex items-center justify-between max-w-md border border-neutral-800 px-4 py-3 text-[10px] tracking-widest uppercase hover:bg-white hover:text-black transition-all"
                 >
-                  <span className="text-sm font-semibold tracking-[0.15em] uppercase">
-                    {p.name}
-                  </span>
-                  <span className="flex items-center gap-3">
-                    <span className="text-[9px] font-mono tracking-[0.25em] text-white/35 group-hover:text-black/40 transition-colors">
-                      {p.tag}
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </span>
+                  <span>Stream on {p.name}</span>
+                  <ArrowUpRight className="w-3 h-3" />
                 </a>
               ))}
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Released */}
-      <section className="relative py-20 md:py-28 bg-[#0a0b0d] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-5 md:px-10">
-          <Reveal className="mb-14">
-            <SectionTag>Released</SectionTag>
-            <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.95]">
-              Out in <span className="text-white/30">the wild.</span>
-            </h2>
-          </Reveal>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {RELEASED.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.1}>
-                {s.url === "#" ? (
-                  <div className="group">
-                    <div className="relative aspect-square overflow-hidden border border-white/10">
-                      <Image
-                        src={s.artwork}
-                        alt={`${s.artist} — ${s.title} artwork`}
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                      <span className="absolute top-4 left-4 text-[9px] font-mono tracking-[0.3em] text-white uppercase bg-black/50 px-3 py-1.5 border border-white/15">
-                        {s.tag}
-                      </span>
-                    </div>
-                    <div className="flex items-end justify-between pt-4">
-                      <div>
-                        <h3 className="font-display text-2xl uppercase tracking-wide">
-                          {s.title}
-                        </h3>
-                        <p className="text-[9px] font-mono tracking-[0.3em] text-white/35 uppercase mt-1.5">
-                          {s.artist} · {s.type} · {s.year}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <a
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block"
-                  >
-                    <div className="relative aspect-square overflow-hidden border border-white/10 group-hover:border-white/30 transition-colors duration-500">
-                      <Image
-                        src={s.artwork}
-                        alt={`${s.artist} — ${s.title} artwork`}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                      <span className="absolute top-4 left-4 text-[9px] font-mono tracking-[0.3em] text-white uppercase bg-black/50 px-3 py-1.5 border border-white/15">
-                        {s.tag}
-                      </span>
-                    </div>
-                    <div className="flex items-end justify-between pt-4">
-                      <div>
-                        <h3 className="font-display text-2xl uppercase tracking-wide">
-                          {s.title}
-                        </h3>
-                        <p className="text-[9px] font-mono tracking-[0.3em] text-white/35 uppercase mt-1.5">
-                          {s.artist} · {s.type} · {s.year}
-                        </p>
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-white transition-colors duration-300" />
-                    </div>
-                  </a>
-                )}
-              </Reveal>
-            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="relative py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 text-center">
-          <Reveal>
-            <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.9] mb-8">
-              Request <span className="text-white/30">press access</span>
+        {/* RELEASED */}
+        <section className="p-8 space-y-6">
+          <div className="text-center">
+            <h2 className="text-xl tracking-[0.2em] font-light">
+              OUT IN <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> THE WILD.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {RELEASED.map((item) => {
+              const body = (
+                <div className="group space-y-2 text-center">
+                  <div className="relative aspect-square bg-neutral-900 overflow-hidden">
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-light">{item.title}</h3>
+                    <p className="text-[9px] text-neutral-500">{item.artist}</p>
+                    <p className="text-[9px] text-neutral-400">{item.tag}</p>
+                  </div>
+                </div>
+              );
+              return item.url === "#" ? (
+                <div key={item.title}>{body}</div>
+              ) : (
+                <a
+                  key={item.title}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {body}
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="border-t border-neutral-800 p-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 p-8 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-[0.9]">
+              REQUEST <span className="text-neutral-500">PRESS ACCESS</span>
             </h2>
             <Link
               href="/contact"
-              className="inline-flex items-center bg-white text-black px-10 py-5 text-[11px] font-bold tracking-[0.3em] uppercase hover:bg-white/80 transition-all"
+              className="flex items-center gap-2 border border-neutral-700 px-3 py-1.5 text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all w-fit"
             >
-              Contact the Label →
+              <span>Contact the Label</span>
+              <ArrowUpRight className="w-3 h-3" />
             </Link>
-          </Reveal>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <Footer />
+        <SiteFooter />
+      </div>
     </div>
   );
 }

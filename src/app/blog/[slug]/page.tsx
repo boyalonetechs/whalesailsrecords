@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ArrowLeft } from "lucide-react";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import { SectionTag } from "@/components/ui";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { POSTS } from "@/data/blog";
 
 export function generateStaticParams() {
@@ -38,67 +37,60 @@ export default async function BlogPostPage({
   const related = POSTS.filter((p) => p.id !== post.id).slice(0, 3);
 
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      <Nav />
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto border border-neutral-800 bg-[#060606]">
+        <SiteHeader />
 
-      <article className="max-w-7xl mx-auto px-5 md:px-10 pt-36 pb-20 md:pt-44 md:pb-28">
-        {/* Back link */}
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-3 text-[10px] font-mono tracking-[0.4em] text-white/40 uppercase hover:text-white transition-colors mb-16"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          The Journal
-        </Link>
+        {/* HEADER */}
+        <header className="border-b border-neutral-800 p-8 lg:p-12">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-[9px] tracking-widest uppercase text-neutral-400 hover:text-white transition-colors mb-8"
+          >
+            <ArrowLeft className="w-3 h-3" />
+            The Journal
+          </Link>
 
-        {/* Hero */}
-        <header className="max-w-4xl mb-16">
-          <div className="flex flex-wrap items-center gap-4 mb-6">
-            <SectionTag>{post.category}</SectionTag>
-            <span className="text-[9px] font-mono tracking-[0.35em] text-white/40 uppercase">
-              {post.author} — {post.date}
-            </span>
-          </div>
-          <h1 className="font-display text-[clamp(2.8rem,7vw,6.5rem)] uppercase tracking-tight leading-[1.02]">
+          <p className="text-[9px] text-neutral-500 tracking-widest uppercase mb-4">
+            {post.category} · {post.author} · {post.date}
+          </p>
+          <h1 className="max-w-4xl text-5xl sm:text-6xl xl:text-7xl font-light tracking-tight leading-[0.95]">
             {post.title}
           </h1>
-          <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl mt-6">
+          <p className="mt-6 max-w-2xl text-[11px] text-neutral-400 leading-relaxed tracking-wide">
             {post.lead}
           </p>
         </header>
 
-        {/* Feature image */}
-        <section className="relative mb-16">
-          <div className="relative aspect-[16/9] overflow-hidden border border-white/10">
+        {/* FEATURE IMAGE */}
+        <section className="border-b border-neutral-800 p-8 lg:p-12">
+          <div className="relative aspect-[16/9] bg-neutral-900 overflow-hidden border border-neutral-800">
             <Image
               src={post.image}
               alt={post.title}
               fill
               priority
               className="object-cover"
-              sizes="(min-width: 768px) 100vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </div>
         </section>
 
-        {/* Body */}
-        <section className="max-w-3xl mx-auto">
+        {/* BODY */}
+        <article className="max-w-3xl mx-auto px-8 lg:px-12 py-12 space-y-6">
           {post.body.slice(0, -1).map((paragraph, i) => (
             <p
               key={i}
-              className="text-white/55 leading-relaxed text-[15px] md:text-base mb-8"
+              className="text-[13px] text-neutral-300 leading-[1.9] tracking-wide"
             >
               {paragraph}
             </p>
           ))}
 
-          {/* Pull quote */}
-          <blockquote className="my-14 md:my-16 py-10 border-y border-white/10 text-center">
-            <span className="block font-display text-3xl md:text-5xl uppercase leading-tight text-white/90">
+          <blockquote className="my-12 py-10 border-y border-neutral-800 text-center space-y-4">
+            <span className="block text-2xl md:text-3xl font-light tracking-tight leading-tight text-white">
               &ldquo;{post.pull}&rdquo;
             </span>
-            <span className="block mt-6 text-[10px] font-mono tracking-[0.45em] text-white/35 uppercase">
+            <span className="block text-[9px] text-neutral-500 tracking-widest uppercase">
               {post.author} — Whalesails Records
             </span>
           </blockquote>
@@ -106,62 +98,50 @@ export default async function BlogPostPage({
           {post.body.slice(-1).map((paragraph, i) => (
             <p
               key={i}
-              className="text-white/55 leading-relaxed text-[15px] md:text-base mb-8"
+              className="text-[13px] text-neutral-300 leading-[1.9] tracking-wide"
             >
               {paragraph}
             </p>
           ))}
+        </article>
 
-          {/* Post footer */}
-          <div className="flex flex-wrap items-center justify-between gap-6 pt-12 mt-16 border-t border-white/10">
-            <span className="text-[10px] font-mono tracking-[0.4em] text-white/40 uppercase">
-              Filed under — {post.category}
-            </span>
-            <Link
-              href="/blog"
-              className="group inline-flex items-center gap-3 text-[10px] font-mono tracking-[0.4em] text-white/60 uppercase hover:text-white transition-colors"
-            >
-              More from the Journal
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-            </Link>
-          </div>
-        </section>
-      </article>
-
-      {/* Related posts */}
-      <section className="border-t border-white/5 bg-[#0a0b0d]">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 py-20">
-          <div className="flex items-center justify-between mb-10">
-            <SectionTag>Keep Reading</SectionTag>
+        {/* RELATED */}
+        <section className="p-8 lg:p-12 border-t border-neutral-800">
+          <div className="text-center mb-8">
+            <h2 className="text-xl tracking-[0.2em] font-light">
+              KEEP <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> READING
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {related.map((p) => (
-              <Link key={p.id} href={`/blog/${p.id}`} className="group block">
-                <div className="relative aspect-[4/3] overflow-hidden border border-white/10 group-hover:border-white/30 transition-colors duration-500">
+              <Link key={p.id} href={`/blog/${p.id}`} className="group space-y-2 text-center">
+                <div className="relative aspect-[4/3] bg-neutral-900 overflow-hidden border border-neutral-800 group-hover:border-neutral-600 transition-colors">
                   <Image
                     src={p.image}
                     alt={p.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-4 left-4 text-[9px] font-mono tracking-[0.35em] text-white/70 uppercase px-3 py-1.5 border border-white/15 bg-black/40">
-                    {p.category}
-                  </span>
                 </div>
-                <h3 className="font-display text-xl uppercase tracking-wide leading-snug mt-5">
-                  {p.title}
-                </h3>
-                <p className="text-xs text-white/50 mt-2">
-                  {p.author} — {p.date}
-                </p>
+                <div>
+                  <h3 className="text-xs font-light tracking-[0.1em] uppercase pt-2">
+                    {p.title}
+                  </h3>
+                  <p className="text-[9px] text-neutral-500">
+                    {p.category} · {p.author} · {p.date}
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-2 border border-neutral-700 px-3 py-1 text-[8px] tracking-widest uppercase hover:bg-white hover:text-black transition-all">
+                  <span>Read More</span>
+                  <ArrowUpRight className="w-2.5 h-2.5" />
+                </span>
               </Link>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
+        <SiteFooter />
+      </div>
     </div>
   );
 }

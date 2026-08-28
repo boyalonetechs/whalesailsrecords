@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import { PageHero, Reveal, SectionTag, EASE } from "@/components/ui";
+import { Send, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { PLATFORMS, CONTACT } from "@/data/site";
 
 const INQUIRIES = [
@@ -15,47 +13,47 @@ const INQUIRIES = [
   { title: "Business & Partnerships", desc: "Brands, investors and alliances.", email: CONTACT.email },
 ];
 
+const inputClass =
+  "w-full h-11 px-4 bg-transparent border border-neutral-800 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-500 transition-colors";
+
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      <Nav />
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto border border-neutral-800 bg-[#060606]">
+        <SiteHeader />
 
-      <PageHero
-        kicker="Contact"
-        title="Make noise."
-        accent="We'll make it last."
-        desc="Demos, bookings, partnerships and press — the label office is open to the world."
-        image="/whalesails/img/press-11.jpg"
-      />
+        {/* HERO */}
+        <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
+          <h2 className="text-xl tracking-[0.2em] font-light mb-6">
+            GET IN <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> TOUCH
+          </h2>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+            MAKE
+          </h1>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+            <span className="text-neutral-500">NOISE.</span>
+          </h1>
+          <p className="text-[11px] text-neutral-400 tracking-wide max-w-md mx-auto pt-6">
+            Demos, bookings, partnerships and press — the label office is open
+            to the world.
+          </p>
+        </section>
 
-      {/* Contact grid */}
-      <section className="relative py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 grid lg:grid-cols-2 gap-16">
-          {/* Form */}
-          <Reveal>
-            <SectionTag>Send a message</SectionTag>
-            <h2 className="font-display text-4xl md:text-5xl uppercase leading-[0.95] mb-8">
-              The office
-              <br />
-              <span className="text-white/30">is listening.</span>
-            </h2>
-
+        {/* BODY */}
+        <section className="grid grid-cols-1 md:grid-cols-12 border-b border-neutral-800">
+          {/* FORM */}
+          <div className="md:col-span-7 p-8 lg:p-10 space-y-5">
             {sent ? (
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: EASE }}
-                className="border border-white/15 p-8"
-              >
-                <p className="font-display text-3xl uppercase mb-3">
-                  Message received.
-                </p>
-                <p className="text-sm text-white/50 leading-relaxed">
+              <div className="border border-neutral-800 p-8 space-y-2">
+                <h2 className="text-2xl font-light tracking-tight">
+                  MESSAGE <span className="text-neutral-500">RECEIVED.</span>
+                </h2>
+                <p className="text-[11px] text-neutral-400 tracking-wide">
                   The label office will respond shortly.
                 </p>
-              </motion.div>
+              </div>
             ) : (
               <form
                 onSubmit={(e) => {
@@ -66,36 +64,23 @@ export default function ContactPage() {
               >
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-[9px] font-mono tracking-[0.3em] text-white/40 uppercase mb-2 block">
+                    <label className="block text-[9px] text-neutral-500 tracking-widest uppercase mb-2">
                       Full name
                     </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Your name"
-                      className="w-full h-12 px-4 bg-transparent border border-white/15 text-sm text-white placeholder:text-white/25 outline-none focus:border-white/60 transition-colors"
-                    />
+                    <input type="text" required placeholder="Your name" className={inputClass} />
                   </div>
                   <div>
-                    <label className="text-[9px] font-mono tracking-[0.3em] text-white/40 uppercase mb-2 block">
+                    <label className="block text-[9px] text-neutral-500 tracking-widest uppercase mb-2">
                       Email
                     </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="you@email.com"
-                      className="w-full h-12 px-4 bg-transparent border border-white/15 text-sm text-white placeholder:text-white/25 outline-none focus:border-white/60 transition-colors"
-                    />
+                    <input type="email" required placeholder="you@email.com" className={inputClass} />
                   </div>
                 </div>
                 <div>
-                  <label className="text-[9px] font-mono tracking-[0.3em] text-white/40 uppercase mb-2 block">
+                  <label className="block text-[9px] text-neutral-500 tracking-widest uppercase mb-2">
                     Subject
                   </label>
-                  <select
-                    className="w-full h-12 px-4 bg-black border border-white/15 text-sm text-white outline-none focus:border-white/60 transition-colors"
-                    defaultValue="Artist Submission"
-                  >
+                  <select defaultValue="Artist Submission" className={`${inputClass} bg-[#060606]`}>
                     {INQUIRIES.map((q) => (
                       <option key={q.title}>{q.title}</option>
                     ))}
@@ -103,110 +88,93 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="text-[9px] font-mono tracking-[0.3em] text-white/40 uppercase mb-2 block">
+                  <label className="block text-[9px] text-neutral-500 tracking-widest uppercase mb-2">
                     Message
                   </label>
                   <textarea
                     required
                     rows={6}
                     placeholder="Tell us what you're building..."
-                    className="w-full px-4 py-3 bg-transparent border border-white/15 text-sm text-white placeholder:text-white/25 outline-none focus:border-white/60 transition-colors resize-none"
+                    className={`${inputClass} h-auto py-3 resize-none`}
                   />
                 </div>
                 <button
                   type="submit"
-                  className="group flex items-center gap-3 bg-white text-black px-8 py-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:gap-5 transition-all"
+                  className="flex items-center gap-2 border border-neutral-700 px-4 py-2 text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-3 h-3" />
                   Send Message
                 </button>
               </form>
             )}
-          </Reveal>
+          </div>
 
-          {/* Info */}
-          <Reveal delay={0.15}>
-            <SectionTag>Direct lines</SectionTag>
-            <div className="space-y-4 mb-10">
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="group flex items-center gap-4 border border-white/10 p-6 hover:bg-white hover:text-black transition-all duration-300"
-              >
-                <Mail className="w-5 h-5 shrink-0" />
-                <div>
-                  <p className="text-[9px] font-mono tracking-[0.3em] text-white/35 group-hover:text-black/50 uppercase mb-1">
-                    General inquiries
-                  </p>
-                  <p className="text-sm font-semibold">{CONTACT.email}</p>
-                </div>
-              </a>
-              <div className="flex items-center gap-4 border border-white/10 p-6">
-                <MapPin className="w-5 h-5 shrink-0" />
-                <div>
-                  <p className="text-[9px] font-mono tracking-[0.3em] text-white/35 uppercase mb-1">
-                    Headquarters
-                  </p>
-                  <p className="text-sm font-semibold">
-                    {CONTACT.location}
-                  </p>
-                </div>
+          {/* DIRECT LINES */}
+          <div className="md:col-span-5 border-t md:border-t-0 md:border-l border-neutral-800 p-8 lg:p-10 space-y-4">
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="flex items-center gap-4 border border-neutral-800 p-5 hover:bg-neutral-900/40 transition-colors"
+            >
+              <Mail className="w-4 h-4 shrink-0 text-neutral-500" />
+              <div>
+                <p className="text-[9px] text-neutral-500 tracking-widest uppercase mb-1">
+                  General inquiries
+                </p>
+                <p className="text-sm font-light">{CONTACT.email}</p>
+              </div>
+            </a>
+            <div className="flex items-center gap-4 border border-neutral-800 p-5">
+              <MapPin className="w-4 h-4 shrink-0 text-neutral-500" />
+              <div>
+                <p className="text-[9px] text-neutral-500 tracking-widest uppercase mb-1">
+                  Headquarters
+                </p>
+                <p className="text-sm font-light">{CONTACT.location}</p>
               </div>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="divide-y divide-neutral-800 border-y border-neutral-800">
               {INQUIRIES.map((q) => (
                 <a
                   key={q.title}
                   href={`mailto:${q.email}`}
-                  className="group border border-white/10 p-5 hover:bg-[#0c0d0f] transition-colors duration-300"
+                  className="flex items-center justify-between py-4 hover:bg-neutral-900/40 transition-colors px-2 first:pt-4 last:pb-4"
                 >
-                  <span className="font-display text-lg uppercase tracking-wide">
-                    {q.title}
-                  </span>
-                  <p className="text-xs text-white/40 leading-relaxed mt-3">
-                    {q.desc}
-                  </p>
-                  <p className="text-[10px] font-mono tracking-[0.2em] text-white/30 group-hover:text-white/60 uppercase mt-3">
-                    {q.email}
-                  </p>
+                  <div>
+                    <p className="text-[10px] font-light tracking-[0.15em] uppercase">
+                      {q.title}
+                    </p>
+                    <p className="text-[9px] text-neutral-500 mt-1">{q.desc}</p>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-neutral-500" />
                 </a>
               ))}
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Platforms */}
-      <section className="border-y border-white/10 bg-[#0a0b0d]">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 py-14">
-          <Reveal className="mb-10">
-            <SectionTag>Elsewhere</SectionTag>
-            <h3 className="font-display text-3xl md:text-5xl uppercase">
-              Find us <span className="text-white/30">everywhere.</span>
-            </h3>
-          </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/5">
-            {PLATFORMS.map((p) => (
-              <a
-                key={p.name}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 py-8 px-4 bg-[#0a0b0d] hover:bg-white hover:text-black transition-colors duration-300"
-              >
-                <span className="font-display text-2xl tracking-[0.1em] uppercase">
-                  {p.name}
-                </span>
-                <span className="text-[8px] font-mono tracking-[0.3em] text-white/35 group-hover:text-black/50 uppercase">
-                  {p.tag}
-                </span>
-              </a>
-            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
+        {/* PLATFORMS */}
+        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-neutral-800 border-b border-neutral-800">
+          {PLATFORMS.map((p) => (
+            <a
+              key={p.name}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center justify-center gap-2 px-4 py-8 border-b border-neutral-800 lg:border-b-0 lg:border-r lg:last:border-r-0 text-center hover:bg-neutral-900/40 transition-colors"
+            >
+              <span className="text-sm font-light tracking-[0.15em] uppercase">
+                {p.name}
+              </span>
+              <span className="text-[8px] text-neutral-500 tracking-widest uppercase">
+                {p.tag}
+              </span>
+            </a>
+          ))}
+        </section>
+
+        <SiteFooter />
+      </div>
     </div>
   );
 }

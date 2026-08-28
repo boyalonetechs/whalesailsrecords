@@ -1,185 +1,140 @@
-"use client";
-
 import Image from "next/image";
-import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import { PageHero, Reveal, SectionTag } from "@/components/ui";
-import { PLATFORMS, RELEASED } from "@/data/site";
+import { ArrowUpRight } from "lucide-react";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import { PLATFORMS } from "@/data/site";
+
+const RELEASES = [
+  {
+    title: "High Frequency",
+    artist: "Ario PaPa · Single · 2026",
+    tag: "Out Now",
+    img: "/whalesails/artwork-song.png",
+    url: "https://ariopapa.com/high-frequency",
+  },
+  {
+    title: "Untitled 02",
+    artist: "Ario PaPa · Single · 2026",
+    tag: "Coming Soon",
+    img: "/whalesails/img/press-5.jpg",
+    url: "#",
+  },
+  {
+    title: "Untitled 03",
+    artist: "Ario PaPa · Single · 2026",
+    tag: "Coming Soon",
+    img: "/whalesails/img/artist-5.jpg",
+    url: "#",
+  },
+];
 
 export default function ArtistPage() {
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      <Nav />
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto border border-neutral-800 bg-[#060606]">
+        <SiteHeader />
 
-      <PageHero
-        kicker="The Artist"
-        title="Ario"
-        accent="PaPa"
-        desc="Recording artist at Whalesails Records — cinematic sound built to last."
-        image="/whalesails/img/artist-2.jpg"
-      />
+        {/* HERO */}
+        <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
+          <h2 className="text-xl tracking-[0.2em] font-light mb-6">
+            THE <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> ARTIST
+          </h2>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+            ARIO
+          </h1>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+            <span className="text-neutral-500">PAPA.</span>
+          </h1>
+        </section>
 
-      {/* Bio */}
-      <section className="relative py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 grid lg:grid-cols-12 gap-12">
-          <Reveal className="lg:col-span-5">
-            <div className="relative aspect-[3/4] overflow-hidden border border-white/10">
+        {/* BIO */}
+        <section className="grid grid-cols-1 md:grid-cols-12 border-b border-neutral-800 p-8 lg:p-12 gap-8 items-center">
+          <div className="md:col-span-5 relative">
+            <div className="relative aspect-[3/4] w-full max-w-[260px] bg-neutral-900 overflow-hidden">
               <Image
                 src="/whalesails/img/artist-5.jpg"
                 alt="Ario PaPa"
                 fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover grayscale contrast-125"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <p className="text-[9px] font-mono tracking-[0.35em] text-white/60 uppercase">
-                  Ario PaPa — {new Date().getFullYear()}
-                </p>
-              </div>
             </div>
-          </Reveal>
+            <div className="absolute right-0 top-0 text-neutral-800/40 text-[90px] leading-none pointer-events-none select-none font-thin">
+              ✶
+            </div>
+          </div>
 
-          <Reveal delay={0.15} className="lg:col-span-7 flex flex-col justify-center">
-            <SectionTag>About</SectionTag>
-            <h2 className="font-display text-5xl md:text-6xl uppercase leading-[0.95] mb-8">
-              The
-              <br />
-              <span className="text-white/30">sound</span>
-            </h2>
-            <p className="text-white/55 leading-relaxed text-[15px]">
+          <div className="md:col-span-7 space-y-5">
+            <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wide max-w-md">
               Ario PaPa is a recording artist whose sound carries the energy of
               Lagos outward — cinematic, melodic and built to last. His work
-              prioritises authenticity over trends, and long-term value over
-              quick attention. Every release is developed with restraint and
-              care, released only when it is ready to be heard.
+              prioritises authenticity over trends and long-term value over
+              quick attention.
             </p>
-            <p className="text-white/55 leading-relaxed text-[15px] mt-6">
+            <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wide max-w-md">
               He records and releases under Whalesails Records.
             </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Releases */}
-      <section className="relative py-20 md:py-28 bg-[#0a0b0d] border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-5 md:px-10">
-          <Reveal className="mb-14">
-            <SectionTag>Releases</SectionTag>
-            <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.95]">
-              The <span className="text-white/30">catalogue</span>
-            </h2>
-          </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {RELEASED.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.1}>
-                {s.url === "#" ? (
-                  <div className="group">
-                    <div className="relative aspect-square overflow-hidden border border-white/10">
-                      <Image
-                        src={s.artwork}
-                        alt={`${s.artist} — ${s.title} artwork`}
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                      <span className="absolute top-4 left-4 text-[9px] font-mono tracking-[0.3em] text-white uppercase bg-black/50 px-3 py-1.5 border border-white/15">
-                        {s.tag}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-2xl uppercase tracking-wide pt-4">
-                      {s.title}
-                    </h3>
-                  </div>
-                ) : (
-                  <a
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block"
-                  >
-                    <div className="relative aspect-square overflow-hidden border border-white/10 group-hover:border-white/30 transition-colors duration-500">
-                      <Image
-                        src={s.artwork}
-                        alt={`${s.artist} — ${s.title} artwork`}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                      <span className="absolute top-4 left-4 text-[9px] font-mono tracking-[0.3em] text-white uppercase bg-black/50 px-3 py-1.5 border border-white/15">
-                        {s.tag}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-2xl uppercase tracking-wide pt-4">
-                      {s.title}
-                    </h3>
-                  </a>
-                )}
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Listen */}
-      <section className="relative py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-5 md:px-10">
-          <Reveal className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10">
-            <div>
-              <SectionTag>Listen</SectionTag>
-              <h3 className="font-display text-3xl md:text-5xl uppercase">
-                Every <span className="text-white/30">platform.</span>
-              </h3>
+            <div className="pt-2 space-y-2">
+              {PLATFORMS.slice(0, 3).map((p) => (
+                <a
+                  key={p.name}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between max-w-md border border-neutral-800 px-4 py-3 text-[10px] tracking-widest uppercase hover:bg-white hover:text-black transition-all"
+                >
+                  <span>Listen — {p.name}</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
+              ))}
             </div>
-          </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/5">
-            {PLATFORMS.map((p) => (
-              <a
-                key={p.name}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 py-8 px-4 bg-[#0a0b0d] hover:bg-white hover:text-black transition-colors duration-300"
-              >
-                <span className="font-display text-2xl tracking-[0.1em] uppercase">
-                  {p.name}
-                </span>
-                <span className="text-[8px] font-mono tracking-[0.3em] text-white/35 group-hover:text-black/50 uppercase">
-                  {p.tag}
-                </span>
-              </a>
-            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="relative py-20 md:py-28 bg-[#0a0b0d] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 text-center">
-          <Reveal>
-            <h2 className="font-display text-5xl md:text-8xl uppercase leading-[0.9] mb-8">
-              The debut
-              <br />
-              <span className="text-white/30">is coming.</span>
+        {/* RELEASES */}
+        <section className="p-8 space-y-6">
+          <div className="text-center">
+            <h2 className="text-xl tracking-[0.2em] font-light">
+              THE <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> CATALOGUE
             </h2>
-            <p className="text-white/50 max-w-md mx-auto text-[15px] leading-relaxed mb-10">
-              The first release from Ario PaPa — engineered for the first
-              listen.
-            </p>
-            <Link
-              href="/release"
-              className="group inline-flex items-center gap-3 bg-white text-black px-10 py-5 text-[11px] font-bold tracking-[0.3em] uppercase hover:gap-5 transition-all"
-            >
-              The Release →
-            </Link>
-          </Reveal>
-        </div>
-      </section>
+          </div>
 
-      <Footer />
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {RELEASES.map((item) => {
+              const body = (
+                <div className="group space-y-2 text-center">
+                  <div className="relative aspect-square bg-neutral-900 overflow-hidden">
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-light">{item.title}</h3>
+                    <p className="text-[9px] text-neutral-500">{item.artist}</p>
+                    <p className="text-[9px] text-neutral-400">{item.tag}</p>
+                  </div>
+                </div>
+              );
+              return item.url === "#" ? (
+                <div key={item.title}>{body}</div>
+              ) : (
+                <a
+                  key={item.title}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {body}
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        <SiteFooter />
+      </div>
     </div>
   );
 }

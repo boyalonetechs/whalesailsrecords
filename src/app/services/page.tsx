@@ -1,10 +1,7 @@
-"use client";
-
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import { PageHero, Reveal, SectionTag } from "@/components/ui";
+import { ArrowUpRight } from "lucide-react";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { SERVICES, CONTACT } from "@/data/site";
 
 const PROCESS = [
@@ -17,107 +14,108 @@ const PROCESS = [
 
 export default function ServicesPage() {
   return (
-    <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      <Nav />
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto border border-neutral-800 bg-[#060606]">
+        <SiteHeader />
 
-      <PageHero
-        kicker="Services"
-        title="What the"
-        accent="label builds"
-        desc="A full-service label for artists who intend to last."
-        image="/whalesails/img/press-10.jpg"
-      />
+        {/* HERO */}
+        <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
+          <h2 className="text-xl tracking-[0.2em] font-light mb-6">
+            WHAT THE <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> LABEL BUILDS
+          </h2>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+            A FULL
+          </h1>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+            <span className="text-neutral-500">SERVICE</span> LABEL.
+          </h1>
+          <p className="text-[11px] text-neutral-400 tracking-wide max-w-md mx-auto pt-6">
+            For artists who intend to last.
+          </p>
+        </section>
 
-      {/* Services grid */}
-      <section className="relative py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-5 md:px-10">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
-            {SERVICES.map((s) => (
-              <div
-                key={s.num}
-                className="group relative bg-black p-8 md:p-10 hover:bg-[#0c0d0f] transition-colors duration-500"
-              >
-                <div className="flex items-start justify-between mb-8">
-                  <span className="font-display text-2xl text-white/20 group-hover:text-white/60 transition-colors">
-                    {s.num}
-                  </span>
-                  <span className="w-6 h-6 border border-white/15 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <ArrowUpRight className="w-3 h-3" />
-                  </span>
-                </div>
-                <h3 className="font-display text-2xl md:text-3xl uppercase tracking-wide mb-4">
+        {/* SERVICES */}
+        <section className="border-b border-neutral-800 divide-y divide-neutral-800">
+          {SERVICES.map((s) => (
+            <div
+              key={s.num}
+              className="grid grid-cols-12 gap-4 items-center px-6 md:px-10 py-6 hover:bg-neutral-900/40 transition-colors"
+            >
+              <div className="col-span-2 md:col-span-1">
+                <span className="text-[10px] text-neutral-500 tracking-widest">
+                  {s.num}
+                </span>
+              </div>
+              <div className="col-span-10 md:col-span-4">
+                <h3 className="text-base md:text-lg font-light tracking-[0.15em] uppercase">
                   {s.title}
                 </h3>
-                <p className="text-sm text-white/45 leading-relaxed">{s.desc}</p>
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <div className="hidden md:block md:col-span-7">
+                <p className="text-[10px] text-neutral-400 leading-relaxed">
+                  {s.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
 
-      {/* Process */}
-      <section className="relative py-20 md:py-28 bg-[#0a0b0d] border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-5 md:px-10">
-          <Reveal className="mb-16">
-            <SectionTag>How it works</SectionTag>
-            <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.95]">
-              From demo to <span className="text-white/30">legacy</span>
+        {/* PROCESS */}
+        <section className="border-b border-neutral-800 p-8 lg:p-12 space-y-6">
+          <div className="text-center">
+            <h2 className="text-xl tracking-[0.2em] font-light">
+              FROM DEMO TO <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> LEGACY
             </h2>
-          </Reveal>
-
-          <div className="space-y-px bg-white/5 border border-white/5">
+          </div>
+          <div className="divide-y divide-neutral-800 border-y border-neutral-800">
             {PROCESS.map((p) => (
               <div
                 key={p.step}
-                className="group grid md:grid-cols-12 gap-4 items-center bg-[#0a0b0d] px-6 md:px-10 py-7 hover:bg-black transition-colors duration-500"
+                className="grid grid-cols-12 gap-4 items-center px-4 md:px-6 py-5 hover:bg-neutral-900/40 transition-colors"
               >
-                <div className="md:col-span-1">
-                  <span className="font-display text-3xl text-white/15 group-hover:text-white/50 transition-colors">
+                <div className="col-span-2 md:col-span-1">
+                  <span className="text-[10px] text-neutral-500 tracking-widest">
                     {p.step}
                   </span>
                 </div>
-                <div className="md:col-span-3">
-                  <h3 className="font-display text-2xl md:text-3xl uppercase tracking-wide">
+                <div className="col-span-10 md:col-span-3">
+                  <h3 className="font-light tracking-[0.15em] uppercase">
                     {p.title}
                   </h3>
                 </div>
-                <div className="md:col-span-8">
-                  <p className="text-sm text-white/45 leading-relaxed">{p.desc}</p>
+                <div className="hidden md:block md:col-span-8">
+                  <p className="text-[10px] text-neutral-400 leading-relaxed">
+                    {p.desc}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="relative py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 text-center">
-          <Reveal>
-            <SectionTag center>Your move</SectionTag>
-            <h2 className="font-display text-5xl md:text-8xl uppercase leading-[0.9] mb-8">
-              Got something
-              <br />
-              <span className="text-white/30">worth building?</span>
-            </h2>
-            <p className="text-white/50 max-w-md mx-auto text-[15px] leading-relaxed mb-10">
-              Demos and partnerships land directly in the label office.
-            </p>
+        {/* CTA */}
+        <section className="p-8 lg:p-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 p-8 text-center md:text-left">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-[0.9]">
+                GOT SOMETHING <span className="text-neutral-500">WORTH BUILDING?</span>
+              </h2>
+              <p className="text-[10px] text-neutral-500 tracking-widest uppercase pt-3">
+                {CONTACT.email}
+              </p>
+            </div>
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-3 bg-white text-black px-10 py-5 text-[11px] font-bold tracking-[0.3em] uppercase hover:gap-5 transition-all"
+              className="flex items-center gap-2 border border-neutral-700 px-3 py-1.5 text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all w-fit"
             >
-              Submit to the Label →
+              <span>Submit to the Label</span>
+              <ArrowUpRight className="w-3 h-3" />
             </Link>
-            <p className="mt-6 text-[10px] font-mono tracking-[0.3em] text-white/30 uppercase">
-              {CONTACT.email}
-            </p>
-          </Reveal>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <Footer />
+        <SiteFooter />
+      </div>
     </div>
   );
 }

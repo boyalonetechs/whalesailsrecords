@@ -3,18 +3,18 @@
 :root {
   --background: #000000;
   --foreground: #f5f5f5;
-  --charcoal: #1c1f24;
-  --deep-grey: #3a3f47;
+  --charcoal: #1a1a1a;
+  --deep-grey: #2a2a2a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-charcoal: var(--charcoal);
-  --color-deepgrey: var(--deep-grey);
+  --color-deep-grey: var(--deep-grey);
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
-  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 }
 
 html {
@@ -33,24 +33,36 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3a3f47;
+  background: #333;
   border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #5c646f;
+  background: #555;
 }
 
 .font-display {
   font-family: var(--font-display), sans-serif;
 }
 
+.font-serif {
+  font-family: var(--font-serif), serif;
+}
+
 .text-stroke {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.22);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.18);
   color: transparent;
+}
+
+.star-symbol {
+  display: inline-block;
+  font-size: 0.6em;
+  vertical-align: middle;
+  margin-left: 0.15em;
+  opacity: 0.5;
 }
