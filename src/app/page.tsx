@@ -115,7 +115,7 @@ export default function WhalesailsRecords() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800">
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 pt-14">
       <div className="border border-neutral-800 bg-[#060606] max-w-[1600px] mx-auto">
         <SiteHeader />
 

@@ -1,143 +1,151 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { PLATFORMS } from "@/data/site";
 
-const RELEASES = [
+const OPENINGS = [
   {
-    title: "High Frequency",
-    artist: "Ario PaPa · Single · 2026",
-    tag: "Out Now",
-    img: "/whalesails/artwork-song.png",
-    url: "https://ariopapa.com/high-frequency",
+    title: "Recording & Mix Engineer",
+    location: "Lagos",
+    type: "Full-time",
+    desc: "Push sessions to a cinematic standard — tracking, editing and mixing with patience and precision.",
   },
   {
-    title: "Untitled 02",
-    artist: "Ario PaPa · Single · 2026",
-    tag: "Coming Soon",
-    img: "/whalesails/img/press-5.jpg",
-    url: "#",
+    title: "A&R / Artist Development",
+    location: "Remote",
+    type: "Full-time",
+    desc: "Scout and develop long-term talent. You protect the vision, the work and the ownership model.",
   },
   {
-    title: "Untitled 03",
-    artist: "Ario PaPa · Single · 2026",
-    tag: "Coming Soon",
-    img: "/whalesails/img/artist-5.jpg",
-    url: "#",
+    title: "Visual Director",
+    location: "Lagos",
+    type: "Contract",
+    desc: "Own artwork, campaigns and the visual identity that keeps the catalogue timeless.",
+  },
+  {
+    title: "Digital Distribution & Strategy",
+    location: "Remote",
+    type: "Full-time",
+    desc: "Route releases across streaming platforms and grow the catalogue with intention, never hype.",
   },
 ];
 
-export default function ArtistPage() {
+function ReadMore({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800">
+    <Link
+      href={href}
+      className="flex items-center gap-2 border border-neutral-700 px-3 py-1.5 text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all w-fit"
+    >
+      <span>{children}</span>
+      <ArrowUpRight className="w-3 h-3" />
+    </Link>
+  );
+}
+
+export default function CareerPage() {
+  return (
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 pt-14">
       <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
         <SiteHeader />
 
         {/* HERO */}
-        <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
-          <h2 className="text-xl tracking-[0.2em] font-light mb-6">
-            THE{" "}
-            <span className="text-xs align-middle mx-1 text-neutral-500">
-              ✶
-            </span>{" "}
-            ARTIST
-          </h2>
-          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
-            ARIO
-          </h1>
-          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
-            <span className="text-neutral-500">PAPA.</span>
-          </h1>
-        </section>
+        <section className="relative border-b border-neutral-800 min-h-[75dvh] overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/whalesails/whalesails-logo.png"
+              alt="Whalesails Records studio"
+              fill
+              className="object-cover "
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/60 to-[#060606]/30" />
+          </div>
 
-        {/* BIO */}
-        <section className="grid grid-cols-1 md:grid-cols-12 border-b border-neutral-800 p-8 lg:p-12 gap-8 items-center">
-          <div className="md:col-span-5 relative">
-            <div className="relative aspect-[3/4] w-full max-w-[260px] bg-neutral-900 overflow-hidden">
-              <Image
-                src="/whalesails/img/artist-5.jpg"
-                alt="Ario PaPa"
-                fill
-                className="object-cover grayscale contrast-125"
-              />
-            </div>
-            <div className="absolute right-0 top-0 text-neutral-800/40 text-[90px] leading-none pointer-events-none select-none font-thin">
-              ✶
+          <div className="relative z-10 min-h-[75dvh] p-8 lg:p-12 flex items-end">
+            <div className="w-full max-w-[1600px] mx-auto">
+              <p className="text-[11px] tracking-[0.2em] uppercase text-neutral-300 mb-4">
+                Join <span className="text-neutral-500">✶</span> The Label
+              </p>
+              <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+                CAREERS
+                <br />
+                <span className="text-neutral-400 lg:hidden">AT WHALESAILS.</span>
+              </h1>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6">
+                <p className="text-[11px] text-neutral-300 leading-relaxed tracking-wide max-w-sm">
+                  We grow slowly and deliberately — people who treat music as a
+                  long game.
+                </p>
+                <ReadMore href="#openings">View Openings</ReadMore>
+              </div>
             </div>
           </div>
 
-          <div className="md:col-span-7 space-y-5">
-            <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wide max-w-md">
-              Ario PaPa is a recording artist whose sound carries the energy of
-              Lagos outward — cinematic, melodic and built to last. His work
-              prioritises authenticity over trends and long-term value over
-              quick attention.
-            </p>
-            <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wide max-w-md">
-              He records and releases under Whalesails Records.
-            </p>
-            <div className="pt-2 space-y-2">
-              {PLATFORMS.slice(0, 3).map((p) => (
-                <a
-                  key={p.name}
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between max-w-md border border-neutral-800 px-4 py-3 text-[10px] tracking-widest uppercase hover:bg-white hover:text-black transition-all"
-                >
-                  <span>Listen — {p.name}</span>
-                  <ArrowUpRight className="w-3 h-3" />
-                </a>
-              ))}
-            </div>
+          <div className="absolute right-8 bottom-8 text-neutral-500/40 text-[120px] leading-none pointer-events-none select-none font-thin z-0">
+            ✶
           </div>
         </section>
 
-        {/* RELEASES */}
-        <section className="p-8 space-y-6">
+        {/* CULTURE */}
+        <section className="grid md:grid-cols-2 xl:grid-cols-4 border-b border-neutral-800 divide-y md:divide-y-0 md:divide-x divide-neutral-800">
+          {CULTURE.map((c, i) => (
+            <div key={c} className="p-8 space-y-3">
+              <span className="text-[10px] text-neutral-500 tracking-widest block">
+                0{i + 1}
+              </span>
+              <p className="text-sm font-light leading-relaxed">{c}</p>
+            </div>
+          ))}
+        </section>
+
+        {/* OPENINGS */}
+        <section id="openings" className="p-8 lg:p-12 space-y-6">
           <div className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
-              THE{" "}
+              OPEN{" "}
               <span className="text-xs align-middle mx-1 text-neutral-500">
                 ✶
               </span>{" "}
-              CATALOGUE
+              ROLES
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {RELEASES.map((item) => {
-              const body = (
-                <div className="group space-y-2 text-center">
-                  <div className="relative aspect-square bg-neutral-900 overflow-hidden">
-                    <Image
-                      src={item.img}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xs font-light">{item.title}</h3>
-                    <p className="text-[9px] text-neutral-500">{item.artist}</p>
-                    <p className="text-[9px] text-neutral-400">{item.tag}</p>
-                  </div>
+          <div className="border border-neutral-800 divide-y divide-neutral-800">
+            {OPENINGS.map((role) => (
+              <div
+                key={role.title}
+                className="p-6 flex flex-col md:flex-row md:items-center gap-4 md:justify-between group hover:bg-neutral-900/40 transition-colors"
+              >
+                <div className="space-y-1">
+                  <h3 className="text-base font-light tracking-wide">
+                    {role.title}
+                  </h3>
+                  <p className="text-[10px] text-neutral-500 tracking-widest uppercase">
+                    {role.type} · {role.location}
+                  </p>
+                  <p className="text-[10px] text-neutral-400 leading-relaxed max-w-md pt-1">
+                    {role.desc}
+                  </p>
                 </div>
-              );
-              return item.url === "#" ? (
-                <div key={item.title}>{body}</div>
-              ) : (
-                <a
-                  key={item.title}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {body}
-                </a>
-              );
-            })}
+                <ReadMore href="/contact">Apply</ReadMore>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="border-t border-neutral-800 p-8 lg:p-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 p-8 text-center md:text-left">
+            <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-[0.9]">
+              DON'T SEE YOUR <span className="text-neutral-500">ROLE?</span>
+            </h2>
+            <ReadMore href="/contact">Tell Us About You</ReadMore>
           </div>
         </section>
 

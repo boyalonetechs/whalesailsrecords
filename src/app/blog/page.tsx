@@ -16,7 +16,7 @@ export default function BlogPage() {
     active === "All" ? POSTS : POSTS.filter((p) => p.category === active);
 
   return (
-    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800">
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 pt-14">
       <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
         <SiteHeader />
 

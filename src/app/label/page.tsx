@@ -4,6 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
+const HERO_VIDEO_URL = "https://www.ariopapa.com/ario/video.mp4";
+
 const PILLARS = [
   {
     title: "Sovereign Ownership",
@@ -39,25 +41,46 @@ function ReadMore({
 
 export default function LabelPage() {
   return (
-    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800">
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 pt-14">
       <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
         <SiteHeader />
 
         {/* HERO */}
-        <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
-          <h2 className="text-xl tracking-[0.2em] font-light mb-6">
-            THE{" "}
-            <span className="text-xs align-middle mx-1 text-neutral-500">
-              ✶
-            </span>{" "}
-            LABEL
-          </h2>
-          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
-            WHALESAILS
-          </h1>
-          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
-            <span className="text-neutral-500">RECORDS</span> LTD.
-          </h1>
+        <section className="relative border-b border-neutral-800 min-h-[75dvh] overflow-hidden">
+          <div className="absolute inset-0">
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src={HERO_VIDEO_URL}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/60 to-[#060606]/30" />
+          </div>
+
+          <div className="relative z-10 min-h-[75dvh] p-8 lg:p-12 flex items-end">
+            <div className="w-full max-w-[1600px] mx-auto">
+              <p className="text-[11px] tracking-[0.2em] uppercase text-neutral-300 mb-4">
+                The <span className="text-neutral-500">✶</span> Label
+              </p>
+              <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
+                WHALESAILS
+                <br />
+                <span className="text-neutral-400 hidden">RECORDS LTD.</span>
+              </h1>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6">
+                <p className="text-[11px] text-neutral-300 leading-relaxed tracking-wide max-w-sm">
+                  A record label that treats music as a long game.
+                </p>
+                <ReadMore href="#pillars">Our Principles</ReadMore>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute right-8 bottom-8 text-neutral-500/40 text-[120px] leading-none pointer-events-none select-none font-thin z-0">
+            ✶
+          </div>
         </section>
 
         {/* STATEMENT */}
@@ -68,7 +91,7 @@ export default function LabelPage() {
                 src="/whalesails/img/press-5.jpg"
                 alt="Whalesails Records session"
                 fill
-                className="object-cover grayscale"
+                className="object-cover"
               />
             </div>
             <div className="absolute right-0 bottom-0 text-neutral-800/40 text-[90px] leading-none pointer-events-none select-none font-thin">
@@ -87,12 +110,15 @@ export default function LabelPage() {
             <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wide max-w-md">
               Substance over hype, always.
             </p>
-            <ReadMore href="/artist">Meet the Artist</ReadMore>
+            <ReadMore href="/career">View Openings</ReadMore>
           </div>
         </section>
 
         {/* PILLARS */}
-        <section className="grid md:grid-cols-3 border-b border-neutral-800 divide-y md:divide-y-0 md:divide-x divide-neutral-800">
+        <section
+          id="pillars"
+          className="grid md:grid-cols-3 border-b border-neutral-800 divide-y md:divide-y-0 md:divide-x divide-neutral-800"
+        >
           {PILLARS.map((p, i) => (
             <div key={p.title} className="p-8 space-y-3">
               <span className="text-[10px] text-neutral-500 tracking-widest block">
@@ -114,7 +140,7 @@ export default function LabelPage() {
             <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-[0.9] text-center md:text-left">
               HEAR THE <span className="text-neutral-500">SOUND.</span>
             </h2>
-            <ReadMore href="/artist">Meet the Artist</ReadMore>
+            <ReadMore href="/career">View Openings</ReadMore>
           </div>
         </section>
 
