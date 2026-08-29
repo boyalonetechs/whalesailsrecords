@@ -37,8 +37,8 @@ export default async function BlogPostPage({
   const related = POSTS.filter((p) => p.id !== post.id).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto border border-neutral-800 bg-[#060606]">
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800">
+      <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
         <SiteHeader />
 
         {/* HEADER */}

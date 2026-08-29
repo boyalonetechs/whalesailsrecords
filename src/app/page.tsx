@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ArrowLeft, ArrowRight, Filter } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { useRouter } from "next/navigation";
@@ -11,30 +10,26 @@ import { useRouter } from "next/navigation";
 const ARTIST_CARDS = [
   {
     id: 1,
-    title: "High Frequency",
-    link: "https://ariopapa.com/high-frequency",
-    artist: "Ariopapa",
+    name: "Ario PaPa",
+    link: "https://ariopapa.com",
     img: "/whalesails/img/artist-1.jpg",
   },
   {
     id: 2,
-    title: "O chim oO",
-    link: "https://ariopapa.com/o-chim-oo",
-    artist: "Ariopapa",
+    name: "Ario PaPa",
+    link: "https://ariopapa.com",
     img: "/whalesails/img/artist-2.jpg",
   },
   {
     id: 3,
-    title: "Mummy",
-    link: "https://ariopapa.com/mummy",
-    artist: "Ariopapa",
+    name: "Ario PaPa",
+    link: "https://ariopapa.com",
     img: "/whalesails/img/artist-3.jpg",
   },
   {
     id: 4,
-    title: "Nwannem",
-    link: "https://ariopapa.com/nwannem",
-    artist: "Ariopapa",
+    name: "Ario PaPa",
+    link: "https://ariopapa.com",
     img: "/whalesails/img/artist-4.jpg",
   },
 ];
@@ -43,62 +38,60 @@ const RELEASES = [
   {
     id: 1,
     title: "High Frequency",
-    artist: "Ario PaPa · Single · 2026",
-    tag: "Out Now",
+    artist: "Ario PaPa",
     img: "/whalesails/artwork-song.png",
-    url: "https://ariopapa.com/high-frequency",
+    link: "https://ariopapa.com/high-frequency",
   },
   {
     id: 2,
-    title: "Untitled 02",
-    artist: "Ario PaPa · Single · 2026",
-    tag: "Coming Soon",
+    title: "O Chim oO",
+    artist: "Ario PaPa",
     img: "/whalesails/img/press-5.jpg",
-    url: "#",
+    link: "https://ariopapa.com/o-chim-oo",
   },
   {
     id: 3,
-    title: "Untitled 03",
-    artist: "Ario PaPa · Single · 2026",
-    tag: "Coming Soon",
-    img: "/whalesails/img/artist-5.jpg",
-    url: "#",
-  },
-];
-
-const JOURNAL_ITEMS = [
-  {
-    category: "Studio",
-    title: "Inside the Studio",
-    desc: "A session log from the making of High Frequency — the gear, the take, and the instinct that became the hook.",
-    img: "/whalesails/img/press-5.jpg",
-    href: "/blog/inside-the-studio",
-  },
-  {
-    category: "Label",
-    title: "Why Ownership Matters",
-    desc: "Masters, publishing and the quiet power of keeping what you make.",
+    title: "Mummy",
+    artist: "Ario PaPa",
     img: "/whalesails/img/press-1.jpg",
-    href: "/blog/why-ownership-matters",
+    link: "https://ariopapa.com/mummy",
   },
   {
-    category: "News",
-    title: "Signal Check",
-    desc: "Releases in the pipeline and the roadmap for the label.",
+    id: 4,
+    title: "Nwannem",
+    artist: "Ario PaPa",
     img: "/whalesails/img/press-8.jpg",
-    href: "/blog/signal-check",
+    link: "https://ariopapa.com/nwannem",
   },
 ];
 
-const ROSTER_FILTERS = [
-  "ALL",
-  "ARTISTS",
-  "PRODUCERS",
-  "SINGLES",
-  "EPS",
-  "ALBUMS",
+const STREAMING_PLATFORMS = [
+  {
+    name: "Spotify",
+    img: "/whalesails/platforms/spotify.png",
+    url: "https://open.spotify.com/artist/4jUd2ZZE9NoLBiDIsXdQIK",
+  },
+  {
+    name: "YouTube Music",
+    img: "/whalesails/platforms/youtube-music.png",
+    url: "https://www.youtube.com/@ario_papa",
+  },
+  {
+    name: "Amazon Music",
+    img: "/whalesails/platforms/amazon-music.png",
+    url: "https://music.amazon.com/",
+  },
+  {
+    name: "Audiomack",
+    img: "/whalesails/platforms/audiomack.png",
+    url: "https://audiomack.com/ariopapa",
+  },
+  {
+    name: "Boomplay",
+    img: "/whalesails/platforms/boomplay.png",
+    url: "https://www.boomplay.com/",
+  },
 ];
-const RELEASE_FILTERS = ["ALL", "SINGLES", "EPS", "ALBUMS"];
 
 function ReadMore({
   href,
@@ -119,8 +112,6 @@ function ReadMore({
 }
 
 export default function WhalesailsRecords() {
-  const [activeRosterFilter, setActiveRosterFilter] = useState("ALL");
-  const [activeReleaseFilter, setActiveReleaseFilter] = useState("ALL");
   const router = useRouter();
 
   return (
@@ -129,7 +120,7 @@ export default function WhalesailsRecords() {
         <SiteHeader />
 
         {/* HERO */}
-        <section className="relative grid grid-cols-1 lg:grid-cols-12 border-b border-neutral-800 p-8 lg:p-12 items-center gap-6">
+        <section className="relative grid grid-cols-1 lg:grid-cols-12 border-b border-neutral-800 h-[90dvh] 2xl:h-[70dvh] @max-3xl:h-[70dvh] p-8 lg:p-12 items-center gap-6">
           <div className="lg:col-span-5 space-y-1">
             <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85] flex items-center gap-3">
               WHALE{" "}
@@ -180,36 +171,60 @@ export default function WhalesailsRecords() {
             </h2>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between border-y border-neutral-800 py-2.5 px-4 text-[10px] tracking-widest text-neutral-400">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-              {ROSTER_FILTERS.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveRosterFilter(cat)}
-                  className={`transition-colors uppercase ${
-                    activeRosterFilter === cat
-                      ? "bg-neutral-800 text-white px-2 py-0.5"
-                      : "hover:text-white"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-            <button className="flex items-center gap-1 border border-neutral-800 px-2 py-1 text-[9px] hover:border-neutral-600 transition-colors">
-              <Filter className="w-2.5 h-2.5" />
-              <span>FILTER</span>
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 @max-3xl:grid-cols-5 gap-4">
             {ARTIST_CARDS.map((item) => (
               <div
                 key={item.id}
                 onClick={() => router.push(item.link)}
                 className="group cursor-pointer space-y-2 text-center"
               >
-                <div className="relative aspect-square bg-neutral-900 overflow-hidden">
+                <div className="relative aspect-square bg-neutral-900 overflow-hidden rounded-lg">
+                  <Image
+                    src={item.img}
+                    alt={item.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-xs font-light">{item.name}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center gap-3 pt-2">
+            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
+              <ArrowLeft className="w-3.5 h-3.5" />
+            </button>
+            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </section>
+
+        {/* NEWEST RELEASE */}
+        <section id="releases" className="p-8 space-y-6">
+          <div className="text-center">
+            <h2 className="text-xl tracking-[0.2em] font-light">
+              NEWEST{" "}
+              <span className="text-xs align-middle mx-1 text-neutral-500">
+                ✶
+              </span>{" "}
+              RELEASE.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5 gap-4">
+            {RELEASES.map((item) => (
+              <a
+                key={item.id}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group space-y-2 text-center"
+              >
+                <div className="relative aspect-square bg-neutral-900 overflow-hidden rounded-lg">
                   <Image
                     src={item.img}
                     alt={item.title}
@@ -219,10 +234,9 @@ export default function WhalesailsRecords() {
                 </div>
                 <div>
                   <h3 className="text-xs font-light">{item.title}</h3>
-                  {/* <p className="text-[9px] text-neutral-500">{item.sub}</p> */}
                   <p className="text-[9px] text-neutral-400">{item.artist}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
@@ -267,126 +281,41 @@ export default function WhalesailsRecords() {
           </div>
         </section>
 
-        {/* NEWEST RELEASE */}
-        <section id="releases" className="p-8 space-y-6">
-          <div className="text-center">
-            <h2 className="text-xl tracking-[0.2em] font-light">
-              NEWEST{" "}
-              <span className="text-xs align-middle mx-1 text-neutral-500">
-                ✶
-              </span>{" "}
-              RELEASE.
-            </h2>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-between border-y border-neutral-800 py-2.5 px-4 text-[10px] tracking-widest text-neutral-400">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-              {RELEASE_FILTERS.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveReleaseFilter(cat)}
-                  className={`transition-colors uppercase ${
-                    activeReleaseFilter === cat
-                      ? "bg-neutral-800 text-white px-2 py-0.5"
-                      : "hover:text-white"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-            <button className="flex items-center gap-1 border border-neutral-800 px-2 py-1 text-[9px] hover:border-neutral-600 transition-colors">
-              <Filter className="w-2.5 h-2.5" />
-              <span>FILTER</span>
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {RELEASES.map((item) => {
-              const body = (
-                <div className="group space-y-2 text-center">
-                  <div className="relative aspect-square bg-neutral-900 overflow-hidden">
-                    <Image
-                      src={item.img}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xs font-light">{item.title}</h3>
-                    <p className="text-[9px] text-neutral-500">{item.artist}</p>
-                    <p className="text-[9px] text-neutral-400">{item.tag}</p>
-                  </div>
-                </div>
-              );
-              return item.url === "#" ? (
-                <div key={item.id}>{body}</div>
-              ) : (
-                <a
-                  key={item.id}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {body}
-                </a>
-              );
-            })}
-          </div>
-
-          <div className="flex justify-center gap-3 pt-2">
-            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
-              <ArrowLeft className="w-3.5 h-3.5" />
-            </button>
-            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </section>
-
-        {/* JOURNAL */}
+        {/* STREAMING PLATFORMS */}
         <section
-          id="journal"
+          id="stream"
           className="p-8 border-t border-neutral-800 space-y-8"
         >
           <div className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
-              NEWS{" "}
+              STREAM{" "}
               <span className="text-xs align-middle mx-1 text-neutral-500">
                 ✶
               </span>{" "}
-              JOURNAL.
+              EVERYWHERE.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {JOURNAL_ITEMS.map((item) => (
-              <div
-                key={item.title}
-                className="group cursor-pointer text-center flex flex-col items-center"
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {STREAMING_PLATFORMS.map((p) => (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center justify-center gap-3 border border-neutral-800 p-6 hover:bg-neutral-900/40 hover:border-neutral-600 transition-colors rounded-lg text-center"
               >
-                <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="space-y-2 max-w-xs">
-                  <h3 className="text-xs tracking-widest uppercase font-medium">
-                    {item.category}
-                  </h3>
-                  <p className="text-sm font-light tracking-tight">
-                    {item.title}
-                  </p>
-                  <p className="text-[10px] text-neutral-400 leading-normal">
-                    {item.desc}
-                  </p>
-                  <ReadMore href={item.href}>Read More</ReadMore>
-                </div>
-              </div>
+                <Image
+                  src={p.img}
+                  alt={p.name}
+                  width={48}
+                  height={48}
+                  className="object-contain h-12 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+                <span className="text-[10px] tracking-widest uppercase text-neutral-400 group-hover:text-white transition-colors">
+                  {p.name}
+                </span>
+              </a>
             ))}
           </div>
         </section>

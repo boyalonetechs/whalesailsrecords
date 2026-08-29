@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { PLATFORMS } from "@/data/site";
@@ -31,8 +31,8 @@ const RELEASED = [
 
 export default function ReleasePage() {
   return (
-    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto border border-neutral-800 bg-[#060606]">
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800">
+      <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
         <SiteHeader />
 
         {/* HERO */}
@@ -111,11 +111,11 @@ export default function ReleasePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5 gap-4">
             {RELEASED.map((item) => {
               const body = (
                 <div className="group space-y-2 text-center">
-                  <div className="relative aspect-square bg-neutral-900 overflow-hidden">
+                  <div className="relative aspect-square bg-neutral-900 overflow-hidden rounded-lg">
                     <Image
                       src={item.img}
                       alt={item.title}
@@ -143,6 +143,15 @@ export default function ReleasePage() {
                 </a>
               );
             })}
+          </div>
+
+          <div className="flex justify-center gap-3">
+            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
+              <ArrowLeft className="w-3.5 h-3.5" />
+            </button>
+            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </section>
 
