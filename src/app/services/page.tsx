@@ -8,10 +8,10 @@ import { SERVICES, CONTACT } from "@/data/site";
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 pt-14">
-      <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
+      <div className="max-w-[1600px] mx-auto  bg-[#060606]">
         <SiteHeader />
 
-        <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
+        <section className="border-neutral-800 p-8 lg:p-12 text-center space-y-1">
           <h2 className="text-2xl tracking-[0.2em] font-light mb-6">
             WHAT WE{" "}
             <span className="text-6xl align-middle mx-1 text-neutral-500">
@@ -32,7 +32,7 @@ export default function ServicesPage() {
               >
                 <div
                   className={`relative aspect-[3/4] sm:aspect-[4/3] rounded-lg lg:aspect-auto lg:min-h-[70dvh] w-full bg-neutral-900 overflow-hidden ${
-                    flip ? "lg:order-2 lg:border-l" : "lg:border-r"
+                    flip ? "lg:order-2  " : ""
                   } border-neutral-800`}
                 >
                   <Image

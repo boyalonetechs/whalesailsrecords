@@ -52,7 +52,7 @@ function ReadMore({
 export default function CareerPage() {
   return (
     <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 pt-14">
-      <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
+      <div className="max-w-[1600px] mx-auto 2xl:border border-neutral-800 bg-[#060606]">
         <SiteHeader />
 
         {/* HERO */}
@@ -94,7 +94,6 @@ export default function CareerPage() {
           </div>
         </section>
 
-        
         {/* Roles */}
         <section id="openings" className="p-8 lg:p-12 space-y-6">
           <div className="text-center">
