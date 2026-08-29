@@ -98,45 +98,35 @@ export default function SiteHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-0 z-40 md:hidden bg-[#060606] flex flex-col justify-center items-center px-6 pt-14 pb-8 text-[14px] tracking-widest uppercase"
+            className="fixed inset-0 z-40 md:hidden bg-[#060606] flex flex-col justify-center items-center px-6 pt-14 pb-8 text-[16px] sm:text-[18px] tracking-widest uppercase overflow-hidden"
           >
-            <nav className="flex flex-col items-center justify-center w-full max-w-xs text-center overflow-hidden">
-              {LINKS.map((l, i) => {
-                const dirs = ["left", "right", "bottom", "right", "left", "bottom"];
-                const dir = dirs[i % dirs.length];
-                const offset =
-                  dir === "left" ? -80 : dir === "right" ? 80 : 60;
-                return (
-                  <motion.div
-                    key={l.href}
-                    initial={{
-                      opacity: 0,
-                      x: dir === "bottom" ? 0 : offset,
-                      y: dir === "bottom" ? offset : 0,
-                    }}
-                    animate={{ opacity: 1, x: 0, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.22, 1, 0.36, 1],
-                      delay: 0.05 + i * 0.06,
-                    }}
+            <nav className="flex flex-col items-center justify-center w-full max-w-xs text-center">
+              {LINKS.map((l, i) => (
+                <motion.div
+                  key={l.href}
+                  initial={{ opacity: 0, x: 120 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 40 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: 0.05 + i * 0.08,
+                  }}
+                >
+                  <Link
+                    href={l.href}
+                    transitionTypes={["nav-forward"]}
+                    onClick={() => setOpen(false)}
+                    className={`block w-full py-3 font-bold text-[22px] sm:text-[26px] tracking-[0.15em] transition-colors hover:text-white ${
+                      pathname !== "/" && isActive(l.href)
+                        ? "text-white"
+                        : "text-neutral-300"
+                    }`}
                   >
-                    <Link
-                      href={l.href}
-                      transitionTypes={["nav-forward"]}
-                      onClick={() => setOpen(false)}
-                      className={`block w-full py-2 transition-colors hover:text-white ${
-                        pathname !== "/" && isActive(l.href)
-                          ? "text-white font-medium"
-                          : "text-neutral-400"
-                      }`}
-                    >
-                      {l.label}
-                    </Link>
-                  </motion.div>
-                );
-              })}
+                    {l.label}
+                  </Link>
+                </motion.div>
+              ))}
             </nav>
           </motion.div>
         )}
