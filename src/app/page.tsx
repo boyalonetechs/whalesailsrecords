@@ -89,7 +89,7 @@ export default function WhalesailsRecords() {
 
   return (
     <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 pt-14">
-      <div className="border border-neutral-800 bg-[#060606] max-w-[1600px] mx-auto">
+      <div className="2xl:border border-neutral-800 bg-[#060606] max-w-[1600px] mx-auto">
         <SiteHeader />
 
         {/* HERO */}
@@ -212,7 +212,11 @@ export default function WhalesailsRecords() {
                 />
               </Parallax>
             </Reveal>
-            <Reveal from="right" className="md:col-span-7 space-y-4" delay={0.1}>
+            <Reveal
+              from="right"
+              className="md:col-span-7 space-y-4"
+              delay={0.1}
+            >
               <h2 className="text-5xl sm:text-6xl font-light tracking-tight leading-none">
                 OWN YOUR
                 <br />
