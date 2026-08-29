@@ -38,7 +38,11 @@ export default function ReleasePage() {
         {/* HERO */}
         <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
           <h2 className="text-xl tracking-[0.2em] font-light mb-6">
-            NEWEST <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> RELEASE
+            NEWEST{" "}
+            <span className="text-xs align-middle mx-1 text-neutral-500">
+              ✶
+            </span>{" "}
+            RELEASE
           </h2>
           <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
             HIGH
@@ -99,7 +103,11 @@ export default function ReleasePage() {
         <section className="p-8 space-y-6">
           <div className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
-              OUT IN <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> THE WILD.
+              OUT IN{" "}
+              <span className="text-xs align-middle mx-1 text-neutral-500">
+                ✶
+              </span>{" "}
+              THE WILD.
             </h2>
           </div>
 

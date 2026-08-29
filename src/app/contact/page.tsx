@@ -7,10 +7,26 @@ import SiteFooter from "@/components/SiteFooter";
 import { PLATFORMS, CONTACT } from "@/data/site";
 
 const INQUIRIES = [
-  { title: "Artist Submissions", desc: "Demos, EPKs and project proposals.", email: "submissions@whalesailsrecords.com" },
-  { title: "Press & Media", desc: "Press kits, interviews and reviews.", email: CONTACT.email },
-  { title: "Bookings & Events", desc: "Live bookings and appearances.", email: CONTACT.email },
-  { title: "Business & Partnerships", desc: "Brands, investors and alliances.", email: CONTACT.email },
+  {
+    title: "Artist Submissions",
+    desc: "Demos, EPKs and project proposals.",
+    email: "submissions@whalesailsrecords.com",
+  },
+  {
+    title: "Press & Media",
+    desc: "Press kits, interviews and reviews.",
+    email: CONTACT.email,
+  },
+  {
+    title: "Bookings & Events",
+    desc: "Live bookings and appearances.",
+    email: CONTACT.email,
+  },
+  {
+    title: "Business & Partnerships",
+    desc: "Brands, investors and alliances.",
+    email: CONTACT.email,
+  },
 ];
 
 const inputClass =
@@ -27,7 +43,11 @@ export default function ContactPage() {
         {/* HERO */}
         <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
           <h2 className="text-xl tracking-[0.2em] font-light mb-6">
-            GET IN <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> TOUCH
+            GET IN{" "}
+            <span className="text-xs align-middle mx-1 text-neutral-500">
+              ✶
+            </span>{" "}
+            TOUCH
           </h2>
           <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
             MAKE
@@ -67,20 +87,33 @@ export default function ContactPage() {
                     <label className="block text-[9px] text-neutral-500 tracking-widest uppercase mb-2">
                       Full name
                     </label>
-                    <input type="text" required placeholder="Your name" className={inputClass} />
+                    <input
+                      type="text"
+                      required
+                      placeholder="Your name"
+                      className={inputClass}
+                    />
                   </div>
                   <div>
                     <label className="block text-[9px] text-neutral-500 tracking-widest uppercase mb-2">
                       Email
                     </label>
-                    <input type="email" required placeholder="you@email.com" className={inputClass} />
+                    <input
+                      type="email"
+                      required
+                      placeholder="you@email.com"
+                      className={inputClass}
+                    />
                   </div>
                 </div>
                 <div>
                   <label className="block text-[9px] text-neutral-500 tracking-widest uppercase mb-2">
                     Subject
                   </label>
-                  <select defaultValue="Artist Submission" className={`${inputClass} bg-[#060606]`}>
+                  <select
+                    defaultValue="Artist Submission"
+                    className={`${inputClass} bg-[#060606]`}
+                  >
                     {INQUIRIES.map((q) => (
                       <option key={q.title}>{q.title}</option>
                     ))}

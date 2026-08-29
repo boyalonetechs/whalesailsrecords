@@ -23,7 +23,11 @@ export default function BlogPage() {
         {/* HERO */}
         <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
           <h2 className="text-xl tracking-[0.2em] font-light mb-6">
-            THE <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> JOURNAL
+            THE{" "}
+            <span className="text-xs align-middle mx-1 text-neutral-500">
+              ✶
+            </span>{" "}
+            JOURNAL
           </h2>
           <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
             FIELD NOTES

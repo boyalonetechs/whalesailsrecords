@@ -6,13 +6,37 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowLeft, ArrowRight, Filter } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { useRouter } from "next/navigation";
 
 const ARTIST_CARDS = [
-  { id: 1, title: "Ario PaPa", sub: "Session 01", tag: "Listen", img: "/whalesails/img/artist-1.jpg" },
-  { id: 2, title: "Ario PaPa", sub: "Session 02", tag: "Listen", img: "/whalesails/img/artist-2.jpg" },
-  { id: 3, title: "Ario PaPa", sub: "Session 03", tag: "Listen", img: "/whalesails/img/artist-3.jpg" },
-  { id: 4, title: "Ario PaPa", sub: "Session 04", tag: "Listen", img: "/whalesails/img/artist-4.jpg" },
-  { id: 5, title: "Ario PaPa", sub: "Session 05", tag: "Listen", img: "/whalesails/img/artist-5.jpg" },
+  {
+    id: 1,
+    title: "High Frequency",
+    link: "https://ariopapa.com/high-frequency",
+    artist: "Ariopapa",
+    img: "/whalesails/img/artist-1.jpg",
+  },
+  {
+    id: 2,
+    title: "O chim oO",
+    link: "https://ariopapa.com/o-chim-oo",
+    artist: "Ariopapa",
+    img: "/whalesails/img/artist-2.jpg",
+  },
+  {
+    id: 3,
+    title: "Mummy",
+    link: "https://ariopapa.com/mummy",
+    artist: "Ariopapa",
+    img: "/whalesails/img/artist-3.jpg",
+  },
+  {
+    id: 4,
+    title: "Nwannem",
+    link: "https://ariopapa.com/nwannem",
+    artist: "Ariopapa",
+    img: "/whalesails/img/artist-4.jpg",
+  },
 ];
 
 const RELEASES = [
@@ -66,10 +90,23 @@ const JOURNAL_ITEMS = [
   },
 ];
 
-const ROSTER_FILTERS = ["ALL", "ARTISTS", "PRODUCERS", "SINGLES", "EPS", "ALBUMS"];
+const ROSTER_FILTERS = [
+  "ALL",
+  "ARTISTS",
+  "PRODUCERS",
+  "SINGLES",
+  "EPS",
+  "ALBUMS",
+];
 const RELEASE_FILTERS = ["ALL", "SINGLES", "EPS", "ALBUMS"];
 
-function ReadMore({ href, children }: { href: string; children: React.ReactNode }) {
+function ReadMore({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
   return (
     <Link
       href={href}
@@ -84,23 +121,25 @@ function ReadMore({ href, children }: { href: string; children: React.ReactNode 
 export default function WhalesailsRecords() {
   const [activeRosterFilter, setActiveRosterFilter] = useState("ALL");
   const [activeReleaseFilter, setActiveReleaseFilter] = useState("ALL");
+  const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 p-4 md:p-8">
-      <div className="max-w-6xl mx-auto border border-neutral-800 bg-[#060606]">
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800">
+      <div className="border border-neutral-800 bg-[#060606] max-w-[1600px] mx-auto">
         <SiteHeader />
 
         {/* HERO */}
         <section className="relative grid grid-cols-1 lg:grid-cols-12 border-b border-neutral-800 p-8 lg:p-12 items-center gap-6">
           <div className="lg:col-span-5 space-y-1">
             <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85] flex items-center gap-3">
-              OWN <span className="text-3xl text-neutral-500 font-normal">✳</span>
+              WHALE{" "}
+              <span className="text-3xl text-neutral-500 font-normal">✶</span>
+            </h1>
+            <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85] flex items-center gap-3">
+              SAILS{" "}
             </h1>
             <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
-              SOUND
-            </h1>
-            <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
-              VISION.
+              RECORDS
             </h1>
           </div>
 
@@ -133,7 +172,11 @@ export default function WhalesailsRecords() {
         <section id="artist" className="p-8 space-y-6">
           <div className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
-              OUR <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> ARTIST
+              OUR{" "}
+              <span className="text-xs align-middle mx-1 text-neutral-500">
+                ✶
+              </span>{" "}
+              ARTIST
             </h2>
           </div>
 
@@ -161,7 +204,11 @@ export default function WhalesailsRecords() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {ARTIST_CARDS.map((item) => (
-              <div key={item.id} className="group cursor-pointer space-y-2 text-center">
+              <div
+                key={item.id}
+                onClick={() => router.push(item.link)}
+                className="group cursor-pointer space-y-2 text-center"
+              >
                 <div className="relative aspect-square bg-neutral-900 overflow-hidden">
                   <Image
                     src={item.img}
@@ -172,8 +219,8 @@ export default function WhalesailsRecords() {
                 </div>
                 <div>
                   <h3 className="text-xs font-light">{item.title}</h3>
-                  <p className="text-[9px] text-neutral-500">{item.sub}</p>
-                  <p className="text-[9px] text-neutral-400">{item.tag}</p>
+                  {/* <p className="text-[9px] text-neutral-500">{item.sub}</p> */}
+                  <p className="text-[9px] text-neutral-400">{item.artist}</p>
                 </div>
               </div>
             ))}
@@ -190,7 +237,10 @@ export default function WhalesailsRecords() {
         </section>
 
         {/* THE LABEL */}
-        <section id="label" className="border-y border-neutral-800 p-8 lg:p-12 relative overflow-hidden">
+        <section
+          id="label"
+          className="border-y border-neutral-800 p-8 lg:p-12 relative overflow-hidden"
+        >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-5 flex justify-start">
               <div className="relative aspect-[4/5] w-full max-w-[260px] bg-neutral-900 overflow-hidden">
@@ -221,7 +271,11 @@ export default function WhalesailsRecords() {
         <section id="releases" className="p-8 space-y-6">
           <div className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
-              NEWEST <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> RELEASE.
+              NEWEST{" "}
+              <span className="text-xs align-middle mx-1 text-neutral-500">
+                ✶
+              </span>{" "}
+              RELEASE.
             </h2>
           </div>
 
@@ -292,16 +346,26 @@ export default function WhalesailsRecords() {
         </section>
 
         {/* JOURNAL */}
-        <section id="journal" className="p-8 border-t border-neutral-800 space-y-8">
+        <section
+          id="journal"
+          className="p-8 border-t border-neutral-800 space-y-8"
+        >
           <div className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
-              NEWS <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> JOURNAL.
+              NEWS{" "}
+              <span className="text-xs align-middle mx-1 text-neutral-500">
+                ✶
+              </span>{" "}
+              JOURNAL.
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {JOURNAL_ITEMS.map((item) => (
-              <div key={item.title} className="group cursor-pointer text-center flex flex-col items-center">
+              <div
+                key={item.title}
+                className="group cursor-pointer text-center flex flex-col items-center"
+              >
                 <div className="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden">
                   <Image
                     src={item.img}
@@ -314,7 +378,9 @@ export default function WhalesailsRecords() {
                   <h3 className="text-xs tracking-widest uppercase font-medium">
                     {item.category}
                   </h3>
-                  <p className="text-sm font-light tracking-tight">{item.title}</p>
+                  <p className="text-sm font-light tracking-tight">
+                    {item.title}
+                  </p>
                   <p className="text-[10px] text-neutral-400 leading-normal">
                     {item.desc}
                   </p>

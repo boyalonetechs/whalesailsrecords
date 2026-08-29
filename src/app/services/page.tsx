@@ -5,11 +5,31 @@ import SiteFooter from "@/components/SiteFooter";
 import { SERVICES, CONTACT } from "@/data/site";
 
 const PROCESS = [
-  { step: "01", title: "Listen", desc: "Send us your work. We listen to everything." },
-  { step: "02", title: "Align", desc: "Sound, story, image and structure in one room." },
-  { step: "03", title: "Build", desc: "Recordings, visuals, IP and release strategy." },
-  { step: "04", title: "Release", desc: "The record goes out with the label behind it." },
-  { step: "05", title: "Endure", desc: "Catalog, royalties, growth and the next chapter." },
+  {
+    step: "01",
+    title: "Listen",
+    desc: "Send us your work. We listen to everything.",
+  },
+  {
+    step: "02",
+    title: "Align",
+    desc: "Sound, story, image and structure in one room.",
+  },
+  {
+    step: "03",
+    title: "Build",
+    desc: "Recordings, visuals, IP and release strategy.",
+  },
+  {
+    step: "04",
+    title: "Release",
+    desc: "The record goes out with the label behind it.",
+  },
+  {
+    step: "05",
+    title: "Endure",
+    desc: "Catalog, royalties, growth and the next chapter.",
+  },
 ];
 
 export default function ServicesPage() {
@@ -21,7 +41,11 @@ export default function ServicesPage() {
         {/* HERO */}
         <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
           <h2 className="text-xl tracking-[0.2em] font-light mb-6">
-            WHAT THE <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> LABEL BUILDS
+            WHAT THE{" "}
+            <span className="text-xs align-middle mx-1 text-neutral-500">
+              ✶
+            </span>{" "}
+            LABEL BUILDS
           </h2>
           <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
             A FULL
@@ -64,7 +88,11 @@ export default function ServicesPage() {
         <section className="border-b border-neutral-800 p-8 lg:p-12 space-y-6">
           <div className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
-              FROM DEMO TO <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> LEGACY
+              FROM DEMO TO{" "}
+              <span className="text-xs align-middle mx-1 text-neutral-500">
+                ✶
+              </span>{" "}
+              LEGACY
             </h2>
           </div>
           <div className="divide-y divide-neutral-800 border-y border-neutral-800">
@@ -98,7 +126,8 @@ export default function ServicesPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 p-8 text-center md:text-left">
             <div>
               <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-[0.9]">
-                GOT SOMETHING <span className="text-neutral-500">WORTH BUILDING?</span>
+                GOT SOMETHING{" "}
+                <span className="text-neutral-500">WORTH BUILDING?</span>
               </h2>
               <p className="text-[10px] text-neutral-500 tracking-widest uppercase pt-3">
                 {CONTACT.email}

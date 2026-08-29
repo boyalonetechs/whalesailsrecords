@@ -109,12 +109,20 @@ export default async function BlogPostPage({
         <section className="p-8 lg:p-12 border-t border-neutral-800">
           <div className="text-center mb-8">
             <h2 className="text-xl tracking-[0.2em] font-light">
-              KEEP <span className="text-xs align-middle mx-1 text-neutral-500">✳</span> READING
+              KEEP{" "}
+              <span className="text-xs align-middle mx-1 text-neutral-500">
+                ✶
+              </span>{" "}
+              READING
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {related.map((p) => (
-              <Link key={p.id} href={`/blog/${p.id}`} className="group space-y-2 text-center">
+              <Link
+                key={p.id}
+                href={`/blog/${p.id}`}
+                className="group space-y-2 text-center"
+              >
                 <div className="relative aspect-[4/3] bg-neutral-900 overflow-hidden border border-neutral-800 group-hover:border-neutral-600 transition-colors">
                   <Image
                     src={p.image}
