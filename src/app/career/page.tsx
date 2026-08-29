@@ -5,33 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
 import Parallax from "@/components/Parallax";
-
-const OPENINGS = [
-  {
-    title: "Recording & Mix Engineer",
-    location: "Lagos",
-    type: "Full-time",
-    desc: "Push sessions to a cinematic standard — tracking, editing and mixing with patience and precision.",
-  },
-  {
-    title: "A&R / Artist Development",
-    location: "Remote",
-    type: "Full-time",
-    desc: "Scout and develop long-term talent. You protect the vision, the work and the ownership model.",
-  },
-  {
-    title: "Visual Director",
-    location: "Lagos",
-    type: "Contract",
-    desc: "Own artwork, campaigns and the visual identity that keeps the catalogue timeless.",
-  },
-  {
-    title: "Digital Distribution & Strategy",
-    location: "Remote",
-    type: "Full-time",
-    desc: "Route releases across streaming platforms and grow the catalogue with intention, never hype.",
-  },
-];
+import { OPENINGS } from "@/data/career";
 
 function ReadMore({
   href,
@@ -121,9 +95,14 @@ export default function CareerPage() {
                 </span>
 
                 <div className="md:col-span-7 space-y-1">
-                  <h3 className="text-3xl sm:text-4xl font-light tracking-tight leading-none group-hover:text-neutral-200 transition-colors">
-                    {role.title}
-                  </h3>
+                  <Link
+                    href={`/career/${role.slug}`}
+                    className="inline-block group-hover:text-white transition-colors"
+                  >
+                    <h3 className="text-3xl sm:text-4xl font-light tracking-tight leading-none group-hover:text-neutral-200 transition-colors">
+                      {role.title}
+                    </h3>
+                  </Link>
                   <p className="text-[10px] text-neutral-500 tracking-widest uppercase pt-2">
                     {role.type} · {role.location}
                   </p>
@@ -134,7 +113,7 @@ export default function CareerPage() {
                 </p>
 
                 <div className="md:col-span-1 flex md:justify-end">
-                  <ReadMore href="/contact">Apply</ReadMore>
+                  <ReadMore href={`/career/${role.slug}`}>View Role</ReadMore>
                 </div>
               </Reveal>
             ))}
