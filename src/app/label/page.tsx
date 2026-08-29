@@ -3,23 +3,9 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { SERVICES } from "@/data/site";
 
 const HERO_VIDEO_URL = "https://www.ariopapa.com/ario/video.mp4";
-
-const PILLARS = [
-  {
-    title: "Sovereign Ownership",
-    desc: "Artists keep the masters. IP structures that let creators own their work.",
-  },
-  {
-    title: "Cinematic Presentation",
-    desc: "Restrained aesthetics and premium execution — timeless, never trend-hungry.",
-  },
-  {
-    title: "Long-Term Value",
-    desc: "Patience, structure and strategy. We build for generations, not the algorithm.",
-  },
-];
 
 function ReadMore({
   href,
@@ -73,7 +59,7 @@ export default function LabelPage() {
                 <p className="text-[11px] text-neutral-300 leading-relaxed tracking-wide max-w-sm">
                   A record label that treats music as a long game.
                 </p>
-                <ReadMore href="#pillars">Our Principles</ReadMore>
+                <ReadMore href="#services">Our Services</ReadMore>
               </div>
             </div>
           </div>
@@ -84,9 +70,9 @@ export default function LabelPage() {
         </section>
 
         {/* STATEMENT */}
-        <section className="grid grid-cols-1 md:grid-cols-12 border-b border-neutral-800 p-8 lg:p-12 gap-8 items-center">
-          <div className="md:col-span-5 relative">
-            <div className="relative aspect-[4/5] w-full max-w-[260px] bg-neutral-900 overflow-hidden">
+        <section className="grid grid-cols-1 lg:grid-cols-12 border-b border-neutral-800 gap-6">
+          <div className="lg:col-span-6 lg:border-r border-neutral-800">
+            <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full w-full min-h-[50dvh] bg-neutral-900 overflow-hidden">
               <Image
                 src="/whalesails/img/press-5.jpg"
                 alt="Whalesails Records session"
@@ -94,12 +80,19 @@ export default function LabelPage() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute right-0 bottom-0 text-neutral-800/40 text-[90px] leading-none pointer-events-none select-none font-thin">
-              ✶
-            </div>
           </div>
 
-          <div className="md:col-span-7 space-y-5">
+          <div className="lg:col-span-6 flex flex-col justify-center p-8 lg:p-12 gap-6">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-500">
+              The <span className="text-neutral-400">✶</span> Philosophy
+            </p>
+            <h2 className="text-4xl md:text-5xl xl:text-6xl font-light tracking-tight leading-[0.95]">
+              A LABEL THAT
+              <br />
+              <span className="text-neutral-500">BUILDS FOR</span>
+              <br />
+              GENERATIONS.
+            </h2>
             <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wide max-w-md">
               Whalesails Records LTD is a record label that treats music as a
               long game. We develop artists, build enduring creative assets and
@@ -114,22 +107,31 @@ export default function LabelPage() {
           </div>
         </section>
 
-        {/* PILLARS */}
+        {/* SERVICES */}
         <section
-          id="pillars"
-          className="grid md:grid-cols-3 border-b border-neutral-800 divide-y md:divide-y-0 md:divide-x divide-neutral-800"
+          id="services"
+          className="border-b border-neutral-800 divide-y divide-neutral-800"
         >
-          {PILLARS.map((p, i) => (
-            <div key={p.title} className="p-8 space-y-3">
-              <span className="text-[10px] text-neutral-500 tracking-widest block">
-                0{i + 1}
-              </span>
-              <h3 className="text-lg font-light tracking-[0.15em] uppercase">
-                {p.title}
-              </h3>
-              <p className="text-[10px] text-neutral-400 leading-relaxed">
-                {p.desc}
-              </p>
+          {SERVICES.map((s) => (
+            <div
+              key={s.num}
+              className="grid grid-cols-12 gap-4 items-center px-6 md:px-10 py-6 hover:bg-neutral-900/40 transition-colors"
+            >
+              <div className="col-span-2 md:col-span-1">
+                <span className="text-[10px] text-neutral-500 tracking-widest">
+                  {s.num}
+                </span>
+              </div>
+              <div className="col-span-10 md:col-span-4">
+                <h3 className="text-base md:text-lg font-light tracking-[0.15em] uppercase">
+                  {s.title}
+                </h3>
+              </div>
+              <div className="hidden md:block md:col-span-7">
+                <p className="text-[10px] text-neutral-400 leading-relaxed">
+                  {s.desc}
+                </p>
+              </div>
             </div>
           ))}
         </section>

@@ -1,33 +1,31 @@
 export const SERVICES = [
   {
     num: "01",
-    title: "Artist Development",
-    desc: "From first single to global stage — structured development that shapes sound, image and story into a durable identity.",
+    title: "Brand Partnership & Activation",
+    desc: "Collaborate with Whalesails to develop tailor-made branded solutions for your marketing campaigns and brand activation efforts.",
+    img: "/whalesails/img/press-1.jpg",
+    round: "l"
   },
   {
     num: "02",
-    title: "A&R & Scouting",
-    desc: "We identify distinctive voices with long-term cultural value and bring them into a system built for sustainable careers.",
+    title: "Music Sync & Licensing",
+    desc: "You can leverage our new and existing catalogues for use in games, TV shows, movies or video games.",
+    img: "/whalesails/img/press-4.jpg",
+    round: "r"
   },
   {
     num: "03",
-    title: "Distribution & Streaming",
-    desc: "Premium release strategy across every major platform — engineered playlisting, global delivery and real-time analytics.",
+    title: "Performance & Appearances",
+    desc: "We create and manage bespoke events for you or your brands with our key industry partners, spanning technicals to locations. Speak to our event curators today.",
+    img: "/whalesails/img/press-2.jpg",
+    round: "l"
   },
   {
     num: "04",
-    title: "Creative Direction",
-    desc: "Cinematic visuals, photography and branding executed with restraint. Every asset built to outlive the trend that inspired it.",
-  },
-  {
-    num: "05",
-    title: "Publishing & IP",
-    desc: "Ownership-first structures that let artists keep their work and monetize it across generations of releases.",
-  },
-  {
-    num: "06",
-    title: "Marketing & PR",
-    desc: "Press, placements and campaigns that convert attention into fandom — measured, deliberate, globally competitive.",
+    title: "Content Production",
+    desc: "Our unique creative team creates custom-made content suitable for you or your brand.",
+    img: "/whalesails/img/press-8.jpg",
+    round: "r"
   },
 ];
 
@@ -68,3 +66,42 @@ export const CONTACT = {
   email: "info@whalesailsrecords.com",
   location: "Lagos, Nigeria",
 };
+
+export type Release = {
+  id: number;
+  title: string;
+  artist: string;
+  img: string;
+  link: string;
+};
+
+export const RELEASES: Release[] = [
+  {
+    id: 1,
+    title: "High Frequency",
+    artist: "Ario PaPa",
+    img: "/whalesails/artwork-song.png",
+    link: "https://ariopapa.com/high-frequency",
+  },
+  {
+    id: 2,
+    title: "O Chim oO",
+    artist: "Ario PaPa",
+    img: "/whalesails/releases/ochimoo.webp",
+    link: "https://ariopapa.com/o-chim-oo",
+  },
+  {
+    id: 3,
+    title: "Mummy",
+    artist: "Ario PaPa",
+    img: "/whalesails/releases/mummy.webp",
+    link: "https://ariopapa.com/mummy",
+  },
+  {
+    id: 4,
+    title: "Nwannem",
+    artist: "Ario PaPa",
+    img: "/whalesails/releases/nwannem.webp",
+    link: "https://ariopapa.com/nwannem",
+  },
+];

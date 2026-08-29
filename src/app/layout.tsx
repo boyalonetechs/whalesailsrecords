@@ -24,12 +24,7 @@ export const metadata: Metadata = {
   title: "Whalesails Records | Cinematic Sound. Timeless Vision.",
   description:
     "Whalesails Records — a premium record label built on cinematic presentation, authentic artistry and enduring creative institutions.",
-  keywords: [
-    "Whalesails Records",
-    "record label",
-    "music label",
-    "Ario PaPa",
-  ],
+  keywords: ["Whalesails Records", "record label", "music label", "Ario PaPa"],
 };
 
 export default function RootLayout({
@@ -40,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebas.variable} ${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${bebas.variable} ${inter.variable} ${instrumentSerif.variable} h-full antialiased overflow-x-none`}
     >
       <body className="min-h-full flex flex-col bg-black text-white">
         {children}

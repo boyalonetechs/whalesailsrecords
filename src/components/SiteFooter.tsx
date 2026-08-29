@@ -20,9 +20,9 @@ export default function SiteFooter() {
   return (
     <footer
       id="contact"
-      className="border-t border-neutral-800 p-8 text-[10px] text-neutral-500"
+      className=" bg-neutral-950 p-8 text-[10px] text-neutral-500"
     >
-      <div className="flex items-center justify-center gap-4 text-white">
+      <div className="flex items-center gap-4 text-white">
         {SOCIALS.map((s) => (
           <a
             key={s.name}
@@ -38,6 +38,9 @@ export default function SiteFooter() {
           </a>
         ))}
       </div>
+      <p className="pt-5 text-right tex-md font-bold">
+        @{new Date().getFullYear()} Whalesailsrecord LTD
+      </p>
     </footer>
   );
 }

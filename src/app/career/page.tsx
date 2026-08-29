@@ -56,7 +56,7 @@ export default function CareerPage() {
         <SiteHeader />
 
         {/* HERO */}
-        <section className="relative border-b border-neutral-800 min-h-[75dvh] overflow-hidden">
+        <section className="relative  border-neutral-800 min-h-[75dvh] overflow-hidden">
           <div className="absolute inset-0">
             <Image
               src="/whalesails/whalesails-logo.png"
@@ -75,7 +75,9 @@ export default function CareerPage() {
               <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
                 CAREERS
                 <br />
-                <span className="text-neutral-400 lg:hidden">AT WHALESAILS.</span>
+                <span className="text-neutral-400 lg:hidden">
+                  AT WHALESAILS.
+                </span>
               </h1>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-6">
                 <p className="text-[11px] text-neutral-300 leading-relaxed tracking-wide max-w-sm">
@@ -92,19 +94,8 @@ export default function CareerPage() {
           </div>
         </section>
 
-        {/* CULTURE */}
-        <section className="grid md:grid-cols-2 xl:grid-cols-4 border-b border-neutral-800 divide-y md:divide-y-0 md:divide-x divide-neutral-800">
-          {CULTURE.map((c, i) => (
-            <div key={c} className="p-8 space-y-3">
-              <span className="text-[10px] text-neutral-500 tracking-widest block">
-                0{i + 1}
-              </span>
-              <p className="text-sm font-light leading-relaxed">{c}</p>
-            </div>
-          ))}
-        </section>
-
-        {/* OPENINGS */}
+        
+        {/* Roles */}
         <section id="openings" className="p-8 lg:p-12 space-y-6">
           <div className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
@@ -116,32 +107,40 @@ export default function CareerPage() {
             </h2>
           </div>
 
-          <div className="border border-neutral-800 divide-y divide-neutral-800">
-            {OPENINGS.map((role) => (
+          <div className="divide-y divide-neutral-800 border-t border-b border-neutral-800">
+            {OPENINGS.map((role, i) => (
               <div
                 key={role.title}
-                className="p-6 flex flex-col md:flex-row md:items-center gap-4 md:justify-between group hover:bg-neutral-900/40 transition-colors"
+                className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:items-center py-8 md:py-10 transition-colors hover:bg-neutral-900/30"
               >
-                <div className="space-y-1">
-                  <h3 className="text-base font-light tracking-wide">
+                <span className="md:col-span-1 text-[11px] text-neutral-500 tracking-widest">
+                  0{i + 1}
+                </span>
+
+                <div className="md:col-span-7 space-y-1">
+                  <h3 className="text-3xl sm:text-4xl font-light tracking-tight leading-none group-hover:text-neutral-200 transition-colors">
                     {role.title}
                   </h3>
-                  <p className="text-[10px] text-neutral-500 tracking-widest uppercase">
+                  <p className="text-[10px] text-neutral-500 tracking-widest uppercase pt-2">
                     {role.type} · {role.location}
                   </p>
-                  <p className="text-[10px] text-neutral-400 leading-relaxed max-w-md pt-1">
-                    {role.desc}
-                  </p>
                 </div>
-                <ReadMore href="/contact">Apply</ReadMore>
+
+                <p className="md:col-span-3 text-[10px] text-neutral-400 leading-relaxed max-w-xs">
+                  {role.desc}
+                </p>
+
+                <div className="md:col-span-1 flex md:justify-end">
+                  <ReadMore href="/contact">Apply</ReadMore>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="border-t border-neutral-800 p-8 lg:p-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 p-8 text-center md:text-left">
+        <section className=" p-8 lg:p-12">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 rounded-2xl p-8 text-center md:text-left">
             <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-[0.9]">
               DON'T SEE YOUR <span className="text-neutral-500">ROLE?</span>
             </h2>

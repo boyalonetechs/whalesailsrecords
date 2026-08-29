@@ -6,6 +6,7 @@ import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { useRouter } from "next/navigation";
+import { RELEASES } from "@/data/site";
 
 const ARTIST_CARDS = [
   {
@@ -31,37 +32,6 @@ const ARTIST_CARDS = [
     name: "Ario PaPa",
     link: "https://ariopapa.com",
     img: "/whalesails/img/artist-4.jpg",
-  },
-];
-
-const RELEASES = [
-  {
-    id: 1,
-    title: "High Frequency",
-    artist: "Ario PaPa",
-    img: "/whalesails/artwork-song.png",
-    link: "https://ariopapa.com/high-frequency",
-  },
-  {
-    id: 2,
-    title: "O Chim oO",
-    artist: "Ario PaPa",
-    img: "/whalesails/img/press-5.jpg",
-    link: "https://ariopapa.com/o-chim-oo",
-  },
-  {
-    id: 3,
-    title: "Mummy",
-    artist: "Ario PaPa",
-    img: "/whalesails/img/press-1.jpg",
-    link: "https://ariopapa.com/mummy",
-  },
-  {
-    id: 4,
-    title: "Nwannem",
-    artist: "Ario PaPa",
-    img: "/whalesails/img/press-8.jpg",
-    link: "https://ariopapa.com/nwannem",
   },
 ];
 
@@ -140,7 +110,7 @@ export default function WhalesailsRecords() {
                 src="/whalesails/whalesails-logo.png"
                 alt="Ario PaPa portrait"
                 fill
-                className="object-cover grayscale contrast-125"
+                className="object-cover  contrast-125"
               />
             </div>
           </div>
@@ -187,20 +157,24 @@ export default function WhalesailsRecords() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-xs font-light">{item.name}</h3>
+                  <h3 className="text-xs font-light lg:text-md lg:font-bold">
+                    {item.name}
+                  </h3>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="flex justify-center gap-3 pt-2">
-            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
-              <ArrowLeft className="w-3.5 h-3.5" />
-            </button>
-            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          {ARTIST_CARDS.length > 4 && (
+            <div className="flex justify-center gap-3 pt-2">
+              <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
+                <ArrowLeft className="w-3.5 h-3.5" />
+              </button>
+              <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </section>
 
         {/* NEWEST RELEASE */}
@@ -232,22 +206,26 @@ export default function WhalesailsRecords() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div>
-                  <h3 className="text-xs font-light">{item.title}</h3>
+                <div className="text-left">
+                  <h3 className="text-xs font-light lg:text-md  lg:font-bold">
+                    {item.title}
+                  </h3>
                   <p className="text-[9px] text-neutral-400">{item.artist}</p>
                 </div>
               </a>
             ))}
           </div>
 
-          <div className="flex justify-center gap-3 pt-2">
-            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
-              <ArrowLeft className="w-3.5 h-3.5" />
-            </button>
-            <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          {RELEASES.length > 4 && (
+            <div className="flex justify-center gap-3 pt-2">
+              <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
+                <ArrowLeft className="w-3.5 h-3.5" />
+              </button>
+              <button className="w-8 h-8 rounded-full border border-neutral-800 flex items-center justify-center hover:border-neutral-500 transition-colors">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </section>
 
         {/* THE LABEL */}
@@ -262,7 +240,7 @@ export default function WhalesailsRecords() {
                   src="/whalesails/img/press-7.jpg"
                   alt="Ario PaPa session"
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover "
                 />
               </div>
             </div>

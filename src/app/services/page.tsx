@@ -1,36 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { SERVICES, CONTACT } from "@/data/site";
-
-const PROCESS = [
-  {
-    step: "01",
-    title: "Listen",
-    desc: "Send us your work. We listen to everything.",
-  },
-  {
-    step: "02",
-    title: "Align",
-    desc: "Sound, story, image and structure in one room.",
-  },
-  {
-    step: "03",
-    title: "Build",
-    desc: "Recordings, visuals, IP and release strategy.",
-  },
-  {
-    step: "04",
-    title: "Release",
-    desc: "The record goes out with the label behind it.",
-  },
-  {
-    step: "05",
-    title: "Endure",
-    desc: "Catalog, royalties, growth and the next chapter.",
-  },
-];
 
 export default function ServicesPage() {
   return (
@@ -38,87 +11,63 @@ export default function ServicesPage() {
       <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
         <SiteHeader />
 
-        {/* HERO */}
         <section className="border-b border-neutral-800 p-8 lg:p-12 text-center space-y-1">
-          <h2 className="text-xl tracking-[0.2em] font-light mb-6">
-            WHAT THE{" "}
-            <span className="text-xs align-middle mx-1 text-neutral-500">
+          <h2 className="text-2xl tracking-[0.2em] font-light mb-6">
+            WHAT WE{" "}
+            <span className="text-6xl align-middle mx-1 text-neutral-500">
               ✶
             </span>{" "}
-            LABEL BUILDS
+            OFFER
           </h2>
-          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
-            A FULL
-          </h1>
-          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-light tracking-tight leading-[0.85]">
-            <span className="text-neutral-500">SERVICE</span> LABEL.
-          </h1>
-          <p className="text-[11px] text-neutral-400 tracking-wide max-w-md mx-auto pt-6">
-            For artists who intend to last.
-          </p>
         </section>
 
-        {/* SERVICES */}
-        <section className="border-b border-neutral-800 divide-y divide-neutral-800">
-          {SERVICES.map((s) => (
-            <div
-              key={s.num}
-              className="grid grid-cols-12 gap-4 items-center px-6 md:px-10 py-6 hover:bg-neutral-900/40 transition-colors"
-            >
-              <div className="col-span-2 md:col-span-1">
-                <span className="text-[10px] text-neutral-500 tracking-widest">
-                  {s.num}
-                </span>
-              </div>
-              <div className="col-span-10 md:col-span-4">
-                <h3 className="text-base md:text-lg font-light tracking-[0.15em] uppercase">
-                  {s.title}
-                </h3>
-              </div>
-              <div className="hidden md:block md:col-span-7">
-                <p className="text-[10px] text-neutral-400 leading-relaxed">
-                  {s.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </section>
-
-        {/* PROCESS */}
-        <section className="border-b border-neutral-800 p-8 lg:p-12 space-y-6">
-          <div className="text-center">
-            <h2 className="text-xl tracking-[0.2em] font-light">
-              FROM DEMO TO{" "}
-              <span className="text-xs align-middle mx-1 text-neutral-500">
-                ✶
-              </span>{" "}
-              LEGACY
-            </h2>
-          </div>
-          <div className="divide-y divide-neutral-800 border-y border-neutral-800">
-            {PROCESS.map((p) => (
+        {/* SERVICES — editorial alternating split */}
+        <section className=" border-neutral-800 space-y-10 lg:space-y-16 px-0 lg:px-8">
+          {SERVICES.map((s, i) => {
+            const flip = i % 2 === 1;
+            return (
               <div
-                key={p.step}
-                className="grid grid-cols-12 gap-4 items-center px-4 md:px-6 py-5 hover:bg-neutral-900/40 transition-colors"
+                key={s.num}
+                className="grid grid-cols-1 lg:grid-cols-2  border-neutral-800  overflow-hidden"
               >
-                <div className="col-span-2 md:col-span-1">
+                <div
+                  className={`relative aspect-[3/4] sm:aspect-[4/3] rounded-lg lg:aspect-auto lg:min-h-[70dvh] w-full bg-neutral-900 overflow-hidden ${
+                    flip ? "lg:order-2 lg:border-l" : "lg:border-r"
+                  } border-neutral-800`}
+                >
+                  <Image
+                    src={s.img}
+                    alt={s.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div
+                  className={`flex flex-col justify-center p-8 lg:p-12 gap-5 ${
+                    flip ? "lg:order-1" : ""
+                  }`}
+                >
                   <span className="text-[10px] text-neutral-500 tracking-widest">
-                    {p.step}
+                    {s.num}
                   </span>
-                </div>
-                <div className="col-span-10 md:col-span-3">
-                  <h3 className="font-light tracking-[0.15em] uppercase">
-                    {p.title}
+                  <h3 className="text-3xl md:text-4xl xl:text-5xl font-light tracking-tight leading-[0.95] uppercase">
+                    {s.title}
                   </h3>
-                </div>
-                <div className="hidden md:block md:col-span-8">
-                  <p className="text-[10px] text-neutral-400 leading-relaxed">
-                    {p.desc}
+                  <p className="text-[11px] text-neutral-400 leading-relaxed tracking-wide max-w-md">
+                    {s.desc}
                   </p>
+                  <Link
+                    href="/contact"
+                    className="flex items-center gap-2 border border-neutral-700 px-3 py-1.5 text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all w-fit"
+                  >
+                    <span>Enquire</span>
+                    <ArrowUpRight className="w-3 h-3" />
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </section>
 
         {/* CTA */}
@@ -126,8 +75,7 @@ export default function ServicesPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 p-8 text-center md:text-left">
             <div>
               <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-[0.9]">
-                GOT SOMETHING{" "}
-                <span className="text-neutral-500">WORTH BUILDING?</span>
+                WORK <span className="text-neutral-500">WITH THE LABEL?</span>
               </h2>
               <p className="text-[10px] text-neutral-500 tracking-widest uppercase pt-3">
                 {CONTACT.email}
@@ -137,7 +85,7 @@ export default function ServicesPage() {
               href="/contact"
               className="flex items-center gap-2 border border-neutral-700 px-3 py-1.5 text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all w-fit"
             >
-              <span>Submit to the Label</span>
+              <span>Get in Touch</span>
               <ArrowUpRight className="w-3 h-3" />
             </Link>
           </div>
