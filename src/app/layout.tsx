@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import { Bebas_Neue, Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
@@ -38,7 +39,13 @@ export default function RootLayout({
       className={`${bebas.variable} ${inter.variable} ${instrumentSerif.variable} h-full antialiased overflow-x-none`}
     >
       <body className="min-h-full flex flex-col bg-black text-white">
-        {children}
+        <ViewTransition
+          enter={{ "nav-forward": "nav-forward", default: "none" }}
+          exit={{ "nav-forward": "nav-forward", default: "none" }}
+          default="none"
+        >
+          {children}
+        </ViewTransition>
       </body>
     </html>
   );

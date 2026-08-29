@@ -112,8 +112,8 @@ export default function CareerPage() {
             {OPENINGS.map((role, i) => (
               <Reveal
                 key={role.title}
+                from={i % 2 === 0 ? "left" : "right"}
                 delay={i * 0.06}
-                y={16}
                 className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:items-center py-8 md:py-10 transition-colors hover:bg-neutral-900/30"
               >
                 <span className="md:col-span-1 text-[11px] text-neutral-500 tracking-widest">
@@ -145,7 +145,7 @@ export default function CareerPage() {
         <section className=" p-8 lg:p-12">
           <Reveal className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 rounded-2xl p-8 text-center md:text-left">
             <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-[0.9]">
-              DON'T SEE YOUR <span className="text-neutral-500">ROLE?</span>
+              DON&apos;T SEE YOUR <span className="text-neutral-500">ROLE?</span>
             </h2>
             <ReadMore href="/contact">Tell Us About You</ReadMore>
           </Reveal>

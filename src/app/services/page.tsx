@@ -32,21 +32,25 @@ export default function ServicesPage() {
                 key={s.num}
                 className="grid grid-cols-1 lg:grid-cols-2  border-neutral-800  overflow-hidden"
               >
-                <Parallax
-                  strength={40}
-                  className={`relative aspect-[3/4] sm:aspect-[4/3] rounded-lg lg:aspect-auto lg:min-h-[70dvh] w-full bg-neutral-900 overflow-hidden ${
-                    flip ? "lg:order-2  " : ""
-                  } border-neutral-800`}
+                <Reveal
+                  from={flip ? "right" : "left"}
+                  className={`${flip ? "lg:order-2" : ""}`}
                 >
-                  <Image
-                    src={s.img}
-                    alt={s.title}
-                    fill
-                    className="object-cover"
-                  />
-                </Parallax>
+                  <Parallax
+                    strength={40}
+                    className={`relative aspect-[3/4] sm:aspect-[4/3] rounded-lg lg:aspect-auto lg:min-h-[70dvh] w-full bg-neutral-900 overflow-hidden border-neutral-800`}
+                  >
+                    <Image
+                      src={s.img}
+                      alt={s.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </Parallax>
+                </Reveal>
 
                 <Reveal
+                  from={flip ? "left" : "right"}
                   delay={0.08}
                   className={`flex flex-col justify-center p-8 lg:p-12 gap-5 ${
                     flip ? "lg:order-1" : ""

@@ -15,7 +15,7 @@ export default function BlogPage() {
         {/* POSTS */}
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-8 px-16">
           {POSTS.map((post, i) => (
-            <Reveal key={post.id} delay={(i % 2) * 0.1} y={20}>
+            <Reveal key={post.id} delay={(i % 2) * 0.1}>
               <Link
                 href={`/blog/${post.id}`}
                 className="group relative aspect-[4/3] rounded-xl bg-neutral-900 overflow-hidden border border-neutral-800 group-hover:border-neutral-600 transition-colors block"

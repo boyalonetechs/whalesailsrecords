@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
@@ -45,7 +44,7 @@ export default function ReleasePage() {
                 </div>
               );
               return (
-                <Reveal key={item.title} delay={i * 0.06} y={20}>
+                <Reveal key={item.title} delay={i * 0.06}>
                   {item.link === "#" ? (
                     body
                   ) : (

@@ -32,8 +32,8 @@ export default function Parallax({
   );
 
   return (
-    <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
-      <motion.div style={{ y }} className="relative w-full h-full scale-110">
+    <div ref={ref} className={`relative overflow-hidden ${className ?? ""}`}>
+      <motion.div style={{ y }} className="absolute inset-0 scale-110">
         {children}
       </motion.div>
     </div>

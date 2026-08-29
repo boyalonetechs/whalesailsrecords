@@ -7,6 +7,24 @@ import Link from "next/link";
 
 const HERO_VIDEO_URL = "https://www.ariopapa.com/ario/video.mp4";
 
+function ReadMore({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex items-center gap-2 border border-neutral-700 px-3 py-1.5 text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all w-fit"
+    >
+      <span>{children}</span>
+      <ArrowUpRight className="w-3 h-3" />
+    </Link>
+  );
+}
+
 export default function Hero() {
   const [active, setActive] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
@@ -38,24 +56,6 @@ export default function Hero() {
       if (diff < 0) setActive(1);
       else setActive(0);
     }
-  }
-
-  function ReadMore({
-    href,
-    children,
-  }: {
-    href: string;
-    children: React.ReactNode;
-  }) {
-    return (
-      <Link
-        href={href}
-        className="flex items-center gap-2 border border-neutral-700 px-3 py-1.5 text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all w-fit"
-      >
-        <span>{children}</span>
-        <ArrowUpRight className="w-3 h-3" />
-      </Link>
-    );
   }
 
   return (

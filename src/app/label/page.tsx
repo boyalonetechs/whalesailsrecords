@@ -73,7 +73,7 @@ export default function LabelPage() {
 
         {/* STATEMENT */}
         <section className="grid grid-cols-1 lg:grid-cols-12 border-b border-neutral-800 gap-6">
-          <div className="lg:col-span-6 lg:border-r border-neutral-800">
+          <Reveal from="left" className="lg:col-span-6 lg:border-r border-neutral-800">
             <Parallax className="relative aspect-[3/4] lg:aspect-auto lg:h-full w-full min-h-[50dvh] bg-neutral-900">
               <Image
                 src="/whalesails/img/press-5.jpg"
@@ -82,9 +82,9 @@ export default function LabelPage() {
                 className="object-cover"
               />
             </Parallax>
-          </div>
+          </Reveal>
 
-          <Reveal className="lg:col-span-6 flex flex-col justify-center p-8 lg:p-12 gap-6" delay={0.1}>
+          <Reveal from="right" className="lg:col-span-6 flex flex-col justify-center p-8 lg:p-12 gap-6" delay={0.1}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-500">
               The <span className="text-neutral-400">✶</span> Philosophy
             </p>
@@ -117,6 +117,7 @@ export default function LabelPage() {
           {SERVICES.map((s, i) => (
             <Reveal
               key={s.num}
+              from={i % 2 === 0 ? "left" : "right"}
               delay={i * 0.06}
               className="grid grid-cols-12 gap-4 items-center px-6 md:px-10 py-6 hover:bg-neutral-900/40 transition-colors"
             >

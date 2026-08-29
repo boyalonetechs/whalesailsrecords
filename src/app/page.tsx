@@ -109,7 +109,7 @@ export default function WhalesailsRecords() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 @max-3xl:grid-cols-5 gap-4">
             {ARTIST_CARDS.map((item, i) => (
-              <Reveal key={item.id} delay={i * 0.08} y={20}>
+              <Reveal key={item.id} delay={i * 0.08}>
                 <div
                   onClick={() => router.push(item.link)}
                   className="group cursor-pointer space-y-2 text-center"
@@ -158,7 +158,7 @@ export default function WhalesailsRecords() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5 gap-4">
             {RELEASES.map((item, i) => (
-              <Reveal key={item.id} delay={i * 0.08} y={20}>
+              <Reveal key={item.id} delay={i * 0.08}>
                 <a
                   href={item.link}
                   target="_blank"
@@ -202,7 +202,7 @@ export default function WhalesailsRecords() {
           className="border-y border-neutral-800 p-8 lg:p-12 relative overflow-hidden"
         >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            <Reveal className="md:col-span-5 flex justify-start">
+            <Reveal from="left" className="md:col-span-5 flex justify-start">
               <Parallax className="relative aspect-[4/5] w-full max-w-[260px] bg-neutral-900">
                 <Image
                   src="/whalesails/img/press-7.jpg"
@@ -212,7 +212,7 @@ export default function WhalesailsRecords() {
                 />
               </Parallax>
             </Reveal>
-            <Reveal className="md:col-span-7 space-y-4" delay={0.1}>
+            <Reveal from="right" className="md:col-span-7 space-y-4" delay={0.1}>
               <h2 className="text-5xl sm:text-6xl font-light tracking-tight leading-none">
                 OWN YOUR
                 <br />
@@ -244,7 +244,7 @@ export default function WhalesailsRecords() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {STREAMING_PLATFORMS.map((p, i) => (
-              <Reveal key={p.name} delay={i * 0.06} y={16}>
+              <Reveal key={p.name} delay={i * 0.06}>
                 <a
                   href={p.url}
                   target="_blank"
