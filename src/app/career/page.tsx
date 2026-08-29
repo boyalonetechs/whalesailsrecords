@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import Reveal from "@/components/Reveal";
+import Parallax from "@/components/Parallax";
 
 const OPENINGS = [
   {
@@ -57,18 +59,18 @@ export default function CareerPage() {
 
         {/* HERO */}
         <section className="relative  border-neutral-800 min-h-[75dvh] overflow-hidden">
-          <div className="absolute inset-0">
+          <Parallax className="absolute inset-0" strength={60}>
             <Image
               src="/whalesails/whalesails-logo.png"
               alt="Whalesails Records studio"
               fill
               className="object-cover "
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/60 to-[#060606]/30" />
-          </div>
+          </Parallax>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/60 to-[#060606]/30" />
 
           <div className="relative z-10 min-h-[75dvh] p-8 lg:p-12 flex items-end">
-            <div className="w-full max-w-[1600px] mx-auto">
+            <Reveal className="w-full max-w-[1600px] mx-auto">
               <p className="text-[11px] tracking-[0.2em] uppercase text-neutral-300 mb-4">
                 Join <span className="text-neutral-500">✶</span> The Label
               </p>
@@ -86,7 +88,7 @@ export default function CareerPage() {
                 </p>
                 <ReadMore href="#openings">View Openings</ReadMore>
               </div>
-            </div>
+            </Reveal>
           </div>
 
           <div className="absolute right-8 bottom-8 text-neutral-500/40 text-[120px] leading-none pointer-events-none select-none font-thin z-0">
@@ -96,7 +98,7 @@ export default function CareerPage() {
 
         {/* Roles */}
         <section id="openings" className="p-8 lg:p-12 space-y-6">
-          <div className="text-center">
+          <Reveal className="text-center">
             <h2 className="text-xl tracking-[0.2em] font-light">
               OPEN{" "}
               <span className="text-xs align-middle mx-1 text-neutral-500">
@@ -104,12 +106,14 @@ export default function CareerPage() {
               </span>{" "}
               ROLES
             </h2>
-          </div>
+          </Reveal>
 
           <div className="divide-y divide-neutral-800 border-t border-b border-neutral-800">
             {OPENINGS.map((role, i) => (
-              <div
+              <Reveal
                 key={role.title}
+                delay={i * 0.06}
+                y={16}
                 className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:items-center py-8 md:py-10 transition-colors hover:bg-neutral-900/30"
               >
                 <span className="md:col-span-1 text-[11px] text-neutral-500 tracking-widest">
@@ -132,19 +136,19 @@ export default function CareerPage() {
                 <div className="md:col-span-1 flex md:justify-end">
                   <ReadMore href="/contact">Apply</ReadMore>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* CTA */}
         <section className=" p-8 lg:p-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 rounded-2xl p-8 text-center md:text-left">
+          <Reveal className="flex flex-col md:flex-row items-center justify-between gap-6 border border-neutral-800 rounded-2xl p-8 text-center md:text-left">
             <h2 className="text-4xl md:text-5xl font-light tracking-tight leading-[0.9]">
               DON'T SEE YOUR <span className="text-neutral-500">ROLE?</span>
             </h2>
             <ReadMore href="/contact">Tell Us About You</ReadMore>
-          </div>
+          </Reveal>
         </section>
 
         <SiteFooter />

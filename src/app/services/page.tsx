@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import Reveal from "@/components/Reveal";
+import Parallax from "@/components/Parallax";
 import { SERVICES, CONTACT } from "@/data/site";
 
 export default function ServicesPage() {
@@ -11,7 +13,7 @@ export default function ServicesPage() {
       <div className="max-w-[1600px] mx-auto  bg-[#060606]">
         <SiteHeader />
 
-        <section className="border-neutral-800 p-8 lg:p-12 text-center space-y-1">
+        <Reveal className="border-neutral-800 p-8 lg:p-12 text-center space-y-1">
           <h2 className="text-2xl tracking-[0.2em] font-light mb-6">
             WHAT WE{" "}
             <span className="text-6xl align-middle mx-1 text-neutral-500">
@@ -19,7 +21,7 @@ export default function ServicesPage() {
             </span>{" "}
             OFFER
           </h2>
-        </section>
+        </Reveal>
 
         {/* SERVICES — editorial alternating split */}
         <section className=" border-neutral-800 space-y-10 lg:space-y-16 px-0 lg:px-8">
@@ -30,7 +32,8 @@ export default function ServicesPage() {
                 key={s.num}
                 className="grid grid-cols-1 lg:grid-cols-2  border-neutral-800  overflow-hidden"
               >
-                <div
+                <Parallax
+                  strength={40}
                   className={`relative aspect-[3/4] sm:aspect-[4/3] rounded-lg lg:aspect-auto lg:min-h-[70dvh] w-full bg-neutral-900 overflow-hidden ${
                     flip ? "lg:order-2  " : ""
                   } border-neutral-800`}
@@ -41,9 +44,10 @@ export default function ServicesPage() {
                     fill
                     className="object-cover"
                   />
-                </div>
+                </Parallax>
 
-                <div
+                <Reveal
+                  delay={0.08}
                   className={`flex flex-col justify-center p-8 lg:p-12 gap-5 ${
                     flip ? "lg:order-1" : ""
                   }`}
@@ -64,7 +68,7 @@ export default function ServicesPage() {
                     <span>Enquire</span>
                     <ArrowUpRight className="w-3 h-3" />
                   </Link>
-                </div>
+                </Reveal>
               </div>
             );
           })}

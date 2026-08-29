@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import Reveal from "@/components/Reveal";
 import { RELEASES } from "@/data/site";
 
 export default function ReleasePage() {
@@ -24,7 +25,7 @@ export default function ReleasePage() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5 gap-4">
-            {RELEASES.map((item) => {
+            {RELEASES.map((item, i) => {
               const body = (
                 <div className="group space-y-2 text-center">
                   <div className="relative aspect-square bg-neutral-900 overflow-hidden rounded-lg">
@@ -43,17 +44,20 @@ export default function ReleasePage() {
                   </div>
                 </div>
               );
-              return item.link === "#" ? (
-                <div key={item.title}>{body}</div>
-              ) : (
-                <a
-                  key={item.title}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {body}
-                </a>
+              return (
+                <Reveal key={item.title} delay={i * 0.06} y={20}>
+                  {item.link === "#" ? (
+                    body
+                  ) : (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {body}
+                    </a>
+                  )}
+                </Reveal>
               );
             })}
           </div>

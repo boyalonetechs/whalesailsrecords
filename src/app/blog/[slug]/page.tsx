@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Clock } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import Reveal from "@/components/Reveal";
 import { POSTS } from "@/data/blog";
 
 export function generateStaticParams() {
@@ -35,7 +36,7 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800 pt-14">
+    <div className="min-h-screen bg-[#060606] text-white font-sans selection:bg-neutral-800">
       <div className="max-w-[1600px] mx-auto border border-neutral-800 bg-[#060606]">
         <SiteHeader />
 
@@ -83,16 +84,18 @@ export default async function BlogPostPage({
             </div>
 
             {/* Cover Image */}
-            <div className="relative w-full overflow-hidden border border-neutral-800">
-              <Image
-                src={post.image}
-                alt={post.title}
-                width={1400}
-                height={700}
-                className="w-full h-auto filter brightness-[0.85] contrast-[1.05]"
-                priority
-              />
-            </div>
+            <Reveal>
+              <div className="relative w-full overflow-hidden border border-neutral-800">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  width={1400}
+                  height={700}
+                  className="w-full h-auto filter brightness-[0.85] contrast-[1.05]"
+                  priority
+                />
+              </div>
+            </Reveal>
 
             {/* Content */}
             <div className="flex flex-col gap-6">

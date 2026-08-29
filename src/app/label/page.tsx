@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import Reveal from "@/components/Reveal";
+import Parallax from "@/components/Parallax";
 import { SERVICES } from "@/data/site";
 
 const HERO_VIDEO_URL = "https://www.ariopapa.com/ario/video.mp4";
@@ -46,7 +48,7 @@ export default function LabelPage() {
           </div>
 
           <div className="relative z-10 min-h-[75dvh] p-8 lg:p-12 flex items-end">
-            <div className="w-full max-w-[1600px] mx-auto">
+            <Reveal className="w-full max-w-[1600px] mx-auto">
               <p className="text-[11px] tracking-[0.2em] uppercase text-neutral-300 mb-4">
                 The <span className="text-neutral-500">✶</span> Label
               </p>
@@ -61,7 +63,7 @@ export default function LabelPage() {
                 </p>
                 <ReadMore href="#services">Our Services</ReadMore>
               </div>
-            </div>
+            </Reveal>
           </div>
 
           <div className="absolute right-8 bottom-8 text-neutral-500/40 text-[120px] leading-none pointer-events-none select-none font-thin z-0">
@@ -72,17 +74,17 @@ export default function LabelPage() {
         {/* STATEMENT */}
         <section className="grid grid-cols-1 lg:grid-cols-12 border-b border-neutral-800 gap-6">
           <div className="lg:col-span-6 lg:border-r border-neutral-800">
-            <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full w-full min-h-[50dvh] bg-neutral-900 overflow-hidden">
+            <Parallax className="relative aspect-[3/4] lg:aspect-auto lg:h-full w-full min-h-[50dvh] bg-neutral-900">
               <Image
                 src="/whalesails/img/press-5.jpg"
                 alt="Whalesails Records session"
                 fill
                 className="object-cover"
               />
-            </div>
+            </Parallax>
           </div>
 
-          <div className="lg:col-span-6 flex flex-col justify-center p-8 lg:p-12 gap-6">
+          <Reveal className="lg:col-span-6 flex flex-col justify-center p-8 lg:p-12 gap-6" delay={0.1}>
             <p className="text-[10px] tracking-[0.2em] uppercase text-neutral-500">
               The <span className="text-neutral-400">✶</span> Philosophy
             </p>
@@ -104,7 +106,7 @@ export default function LabelPage() {
               Substance over hype, always.
             </p>
             <ReadMore href="/career">View Openings</ReadMore>
-          </div>
+          </Reveal>
         </section>
 
         {/* SERVICES */}
@@ -112,9 +114,10 @@ export default function LabelPage() {
           id="services"
           className="border-b border-neutral-800 divide-y divide-neutral-800"
         >
-          {SERVICES.map((s) => (
-            <div
+          {SERVICES.map((s, i) => (
+            <Reveal
               key={s.num}
+              delay={i * 0.06}
               className="grid grid-cols-12 gap-4 items-center px-6 md:px-10 py-6 hover:bg-neutral-900/40 transition-colors"
             >
               <div className="col-span-2 md:col-span-1">
@@ -132,7 +135,7 @@ export default function LabelPage() {
                   {s.desc}
                 </p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </section>
 
